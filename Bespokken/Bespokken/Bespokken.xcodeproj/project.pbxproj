@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */; };
+		F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */; };
+		F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */; };
+		F0C6D0F91BC9403000CB4F37 /* Bespokken.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F71BC9402F00CB4F37 /* Bespokken.xcdatamodeld */; };
+		F0C6D0FB1BC9403000CB4F37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0FA1BC9403000CB4F37 /* Assets.xcassets */; };
+		F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0FC1BC9403000CB4F37 /* LaunchScreen.storyboard */; };
+		F0C6D1091BC9403000CB4F37 /* BespokkenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D1081BC9403000CB4F37 /* BespokkenTests.swift */; };
+		F0C6D1141BC9403000CB4F37 /* BespokkenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D1131BC9403000CB4F37 /* BespokkenUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0C6D1051BC9403000CB4F37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0C6D0E51BC9402F00CB4F37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0C6D0EC1BC9402F00CB4F37;
+			remoteInfo = Bespokken;
+		};
+		F0C6D1101BC9403000CB4F37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0C6D0E51BC9402F00CB4F37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0C6D0EC1BC9402F00CB4F37;
+			remoteInfo = Bespokken;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bespokken.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0C6D0F51BC9402F00CB4F37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0C6D0F81BC9402F00CB4F37 /* Bespokken.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bespokken.xcdatamodel; sourceTree = "<group>"; };
+		F0C6D0FA1BC9403000CB4F37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0C6D0FD1BC9403000CB4F37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0C6D0FF1BC9403000CB4F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C6D1041BC9403000CB4F37 /* BespokkenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BespokkenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0C6D1081BC9403000CB4F37 /* BespokkenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BespokkenTests.swift; sourceTree = "<group>"; };
+		F0C6D10A1BC9403000CB4F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C6D10F1BC9403000CB4F37 /* BespokkenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BespokkenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0C6D1131BC9403000CB4F37 /* BespokkenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BespokkenUITests.swift; sourceTree = "<group>"; };
+		F0C6D1151BC9403000CB4F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0C6D0EA1BC9402F00CB4F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D1011BC9403000CB4F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D10C1BC9403000CB4F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0C6D0E41BC9402F00CB4F37 = {
+			isa = PBXGroup;
+			children = (
+				F0C6D0EF1BC9402F00CB4F37 /* Bespokken */,
+				F0C6D1071BC9403000CB4F37 /* BespokkenTests */,
+				F0C6D1121BC9403000CB4F37 /* BespokkenUITests */,
+				F0C6D0EE1BC9402F00CB4F37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0C6D0EE1BC9402F00CB4F37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */,
+				F0C6D1041BC9403000CB4F37 /* BespokkenTests.xctest */,
+				F0C6D10F1BC9403000CB4F37 /* BespokkenUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0C6D0EF1BC9402F00CB4F37 /* Bespokken */ = {
+			isa = PBXGroup;
+			children = (
+				F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */,
+				F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */,
+				F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */,
+				F0C6D0FA1BC9403000CB4F37 /* Assets.xcassets */,
+				F0C6D0FC1BC9403000CB4F37 /* LaunchScreen.storyboard */,
+				F0C6D0FF1BC9403000CB4F37 /* Info.plist */,
+				F0C6D0F71BC9402F00CB4F37 /* Bespokken.xcdatamodeld */,
+			);
+			path = Bespokken;
+			sourceTree = "<group>";
+		};
+		F0C6D1071BC9403000CB4F37 /* BespokkenTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0C6D1081BC9403000CB4F37 /* BespokkenTests.swift */,
+				F0C6D10A1BC9403000CB4F37 /* Info.plist */,
+			);
+			path = BespokkenTests;
+			sourceTree = "<group>";
+		};
+		F0C6D1121BC9403000CB4F37 /* BespokkenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F0C6D1131BC9403000CB4F37 /* BespokkenUITests.swift */,
+				F0C6D1151BC9403000CB4F37 /* Info.plist */,
+			);
+			path = BespokkenUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0C6D0EC1BC9402F00CB4F37 /* Bespokken */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0C6D1181BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "Bespokken" */;
+			buildPhases = (
+				F0C6D0E91BC9402F00CB4F37 /* Sources */,
+				F0C6D0EA1BC9402F00CB4F37 /* Frameworks */,
+				F0C6D0EB1BC9402F00CB4F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bespokken;
+			productName = Bespokken;
+			productReference = F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0C6D1031BC9403000CB4F37 /* BespokkenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0C6D11B1BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "BespokkenTests" */;
+			buildPhases = (
+				F0C6D1001BC9403000CB4F37 /* Sources */,
+				F0C6D1011BC9403000CB4F37 /* Frameworks */,
+				F0C6D1021BC9403000CB4F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0C6D1061BC9403000CB4F37 /* PBXTargetDependency */,
+			);
+			name = BespokkenTests;
+			productName = BespokkenTests;
+			productReference = F0C6D1041BC9403000CB4F37 /* BespokkenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F0C6D10E1BC9403000CB4F37 /* BespokkenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0C6D11E1BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "BespokkenUITests" */;
+			buildPhases = (
+				F0C6D10B1BC9403000CB4F37 /* Sources */,
+				F0C6D10C1BC9403000CB4F37 /* Frameworks */,
+				F0C6D10D1BC9403000CB4F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0C6D1111BC9403000CB4F37 /* PBXTargetDependency */,
+			);
+			name = BespokkenUITests;
+			productName = BespokkenUITests;
+			productReference = F0C6D10F1BC9403000CB4F37 /* BespokkenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0C6D0E51BC9402F00CB4F37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = nickvido;
+				TargetAttributes = {
+					F0C6D0EC1BC9402F00CB4F37 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					F0C6D1031BC9403000CB4F37 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = F0C6D0EC1BC9402F00CB4F37;
+					};
+					F0C6D10E1BC9403000CB4F37 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = F0C6D0EC1BC9402F00CB4F37;
+					};
+				};
+			};
+			buildConfigurationList = F0C6D0E81BC9402F00CB4F37 /* Build configuration list for PBXProject "Bespokken" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0C6D0E41BC9402F00CB4F37;
+			productRefGroup = F0C6D0EE1BC9402F00CB4F37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0C6D0EC1BC9402F00CB4F37 /* Bespokken */,
+				F0C6D1031BC9403000CB4F37 /* BespokkenTests */,
+				F0C6D10E1BC9403000CB4F37 /* BespokkenUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0C6D0EB1BC9402F00CB4F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */,
+				F0C6D0FB1BC9403000CB4F37 /* Assets.xcassets in Resources */,
+				F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D1021BC9403000CB4F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D10D1BC9403000CB4F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0C6D0E91BC9402F00CB4F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */,
+				F0C6D0F91BC9403000CB4F37 /* Bespokken.xcdatamodeld in Sources */,
+				F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D1001BC9403000CB4F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0C6D1091BC9403000CB4F37 /* BespokkenTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6D10B1BC9403000CB4F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0C6D1141BC9403000CB4F37 /* BespokkenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0C6D1061BC9403000CB4F37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0C6D0EC1BC9402F00CB4F37 /* Bespokken */;
+			targetProxy = F0C6D1051BC9403000CB4F37 /* PBXContainerItemProxy */;
+		};
+		F0C6D1111BC9403000CB4F37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0C6D0EC1BC9402F00CB4F37 /* Bespokken */;
+			targetProxy = F0C6D1101BC9403000CB4F37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0C6D0F51BC9402F00CB4F37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F0C6D0FC1BC9403000CB4F37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0C6D0FD1BC9403000CB4F37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0C6D1161BC9403000CB4F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		F0C6D1171BC9403000CB4F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0C6D1191BC9403000CB4F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Bespokken/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.Bespokken;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F0C6D11A1BC9403000CB4F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Bespokken/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.Bespokken;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F0C6D11C1BC9403000CB4F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BespokkenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.BespokkenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bespokken.app/Bespokken";
+			};
+			name = Debug;
+		};
+		F0C6D11D1BC9403000CB4F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BespokkenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.BespokkenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bespokken.app/Bespokken";
+			};
+			name = Release;
+		};
+		F0C6D11F1BC9403000CB4F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BespokkenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.BespokkenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Bespokken;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F0C6D1201BC9403000CB4F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BespokkenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickvido.BespokkenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Bespokken;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0C6D0E81BC9402F00CB4F37 /* Build configuration list for PBXProject "Bespokken" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0C6D1161BC9403000CB4F37 /* Debug */,
+				F0C6D1171BC9403000CB4F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0C6D1181BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "Bespokken" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0C6D1191BC9403000CB4F37 /* Debug */,
+				F0C6D11A1BC9403000CB4F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F0C6D11B1BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "BespokkenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0C6D11C1BC9403000CB4F37 /* Debug */,
+				F0C6D11D1BC9403000CB4F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F0C6D11E1BC9403000CB4F37 /* Build configuration list for PBXNativeTarget "BespokkenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0C6D11F1BC9403000CB4F37 /* Debug */,
+				F0C6D1201BC9403000CB4F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0C6D0F71BC9402F00CB4F37 /* Bespokken.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0C6D0F81BC9402F00CB4F37 /* Bespokken.xcdatamodel */,
+			);
+			currentVersion = F0C6D0F81BC9402F00CB4F37 /* Bespokken.xcdatamodel */;
+			path = Bespokken.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F0C6D0E51BC9402F00CB4F37 /* Project object */;
+}
