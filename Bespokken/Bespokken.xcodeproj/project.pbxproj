@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F0233FD31BD1C64A00257A82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0233FD21BD1C64A00257A82 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F037E5031BD2C16500B0F938 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5021BD2C16500B0F938 /* Mode.swift */; settings = {ASSET_TAGS = (); }; };
+		F037E5051BD2C2BD00B0F938 /* ModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5041BD2C2BD00B0F938 /* ModeCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */; };
 		F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */; };
 		F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		F0233FD21BD1C64A00257A82 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F037E5021BD2C16500B0F938 /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		F037E5041BD2C2BD00B0F938 /* ModeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCell.swift; sourceTree = "<group>"; };
 		F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bespokken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				F0FBFA751BD1D496003064FA /* ContainerViewController.swift */,
 				F0FBFA771BD27CC2003064FA /* ShortCodesViewController.swift */,
 				F0FBFA791BD27CDB003064FA /* HistoryViewController.swift */,
+				F037E5021BD2C16500B0F938 /* Mode.swift */,
+				F037E5041BD2C2BD00B0F938 /* ModeCell.swift */,
 			);
 			path = Bespokken;
 			sourceTree = "<group>";
@@ -278,10 +284,12 @@
 				F0FBFA781BD27CC2003064FA /* ShortCodesViewController.swift in Sources */,
 				F0C6D0F91BC9403000CB4F37 /* Bespokken.xcdatamodeld in Sources */,
 				F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */,
+				F037E5051BD2C2BD00B0F938 /* ModeCell.swift in Sources */,
 				F0FBFA741BD1D28A003064FA /* EmptySegue.swift in Sources */,
 				F0FBFA761BD1D496003064FA /* ContainerViewController.swift in Sources */,
 				F0233FD31BD1C64A00257A82 /* HomeViewController.swift in Sources */,
 				F0FBFA7A1BD27CDB003064FA /* HistoryViewController.swift in Sources */,
+				F037E5031BD2C16500B0F938 /* Mode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

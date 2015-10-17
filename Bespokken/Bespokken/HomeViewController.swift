@@ -8,10 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var buttons = [UIButton]()
+    var modes = [Mode]()
     
     @IBOutlet weak var btnImmediateModeToggle: UIButton!
+    @IBOutlet weak var modesCollectionView: UICollectionView!
     
     
     
@@ -32,11 +34,45 @@ class HomeViewController: UIViewController {
             button.layer.cornerRadius = 5
             button.titleLabel?.textAlignment = .Center
         }
+        
+        loadModes()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadModes() {
+        for i in 0...100 {
+            let m = Mode(name: String(i))
+            modes.append(m)
+        }
+        
+        self.modesCollectionView.reloadData()
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return modes.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Mode", forIndexPath: indexPath) as! ModeCell
+        let mode = modes[indexPath.item]
+        
+        cell.lblName.text = mode.name
+        
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.backgroundColor = UIColor.whiteColor().CGColor
+        cell.layer.cornerRadius = 7
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let mode = modes[indexPath.item]
+        print("mode: \(mode.name)")
     }
 
 }
