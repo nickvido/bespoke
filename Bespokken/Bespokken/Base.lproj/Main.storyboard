@@ -1,25 +1,168 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home-->
+        <scene sceneID="0kM-L4-YYM">
+            <objects>
+                <viewController title="Home" id="DWW-mg-6fd" customClass="HomeViewController" customModule="Bespokken" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o83-61-qxn"/>
+                        <viewControllerLayoutGuide type="bottom" id="xsl-9z-hc8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ULx-ic-uZE">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.099356828664003083" green="1" blue="0.0021081246396479347" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zn-Wi-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="-789.5"/>
+        </scene>
+        <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="Bespokken" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzN-Ot-JpA">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.061523099769999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="HoH-rj-Cou" kind="embed" identifier="containerViewEmbedSegue" id="yk9-vI-Rjl"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-7w-mjs">
+                                <rect key="frame" x="0.0" y="679" width="1024" height="89"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhr-79-1GV">
+                                        <rect key="frame" x="491" y="8" width="75" height="75"/>
+                                        <animations/>
+                                        <state key="normal" title="History"/>
+                                        <connections>
+                                            <action selector="onHistoryTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXF-uj-QcT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-qg-UiY">
+                                        <rect key="frame" x="379" y="8" width="75" height="75"/>
+                                        <animations/>
+                                        <state key="normal" title="Day / Night"/>
+                                        <connections>
+                                            <action selector="onDayNightTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QVj-lp-Kbr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-9t-vPq">
+                                        <rect key="frame" x="277" y="6" width="75" height="75"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Home"/>
+                                        <connections>
+                                            <action selector="onHomeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vst-Z3-Csb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sTj-Uz-OpN">
+                                        <rect key="frame" x="597" y="8" width="75" height="75"/>
+                                        <animations/>
+                                        <state key="normal" title="Short Codes"/>
+                                        <connections>
+                                            <action selector="onShortCodesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZUy-tM-tYl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="btnDayNight" destination="dY5-qg-UiY" id="TqQ-4u-mdg"/>
+                        <outlet property="btnHistory" destination="Vhr-79-1GV" id="sXE-ag-GOl"/>
+                        <outlet property="btnHome" destination="BZz-9t-vPq" id="Z4y-HC-CEZ"/>
+                        <outlet property="btnShortCodes" destination="sTj-Uz-OpN" id="kXd-ll-gLS"/>
+                        <outlet property="containerView" destination="lzN-Ot-JpA" id="Mde-ld-ha4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1366" y="157"/>
+        </scene>
+        <!--Container-->
+        <scene sceneID="lHd-Ns-XKj">
+            <objects>
+                <viewController title="Container" id="HoH-rj-Cou" customClass="ContainerViewController" customModule="Bespokken" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rQg-PU-cSU"/>
+                        <viewControllerLayoutGuide type="bottom" id="hfy-ef-wxP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cMv-nv-UR4">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="DWW-mg-6fd" kind="show" identifier="showHome" customClass="EmptySegue" customModule="Bespokken" animates="NO" id="R3t-WP-n5d"/>
+                        <segue destination="fHB-gV-KSl" kind="show" identifier="showHistory" customClass="EmptySegue" customModule="Bespokken" animates="NO" id="DYn-na-uvW"/>
+                        <segue destination="Ic8-Gu-5fG" kind="show" identifier="showShortCodes" customClass="EmptySegue" customModule="Bespokken" animates="NO" id="yqA-wD-F1q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DbO-Fn-asl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-141" y="44.5"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="3ci-gC-qCU">
+            <objects>
+                <viewController title="History" id="fHB-gV-KSl" customClass="HistoryViewController" customModule="Bespokken" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kkB-v9-CWg"/>
+                        <viewControllerLayoutGuide type="bottom" id="41b-TU-rq6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G1J-uU-dME">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.092125669194269122" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iwZ-bf-nBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="20.5"/>
+        </scene>
+        <!--ShortCodes-->
+        <scene sceneID="rVR-1V-E52">
+            <objects>
+                <viewController title="ShortCodes" id="Ic8-Gu-5fG" customClass="ShortCodesViewController" customModule="Bespokken" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tpR-gc-PNV"/>
+                        <viewControllerLayoutGuide type="bottom" id="GBS-bm-CWz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YiK-Uf-W2h">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.3732334773766377" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oB1-6N-boc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="866"/>
         </scene>
     </scenes>
 </document>
