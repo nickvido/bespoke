@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes]
         
         for button in toolbarButtons {
-            button.backgroundColor = UIColor.clearColor()
+            button.backgroundColor = UIColor.whiteColor()
             button.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
             button.layer.borderWidth = 1
             button.layer.cornerRadius = 5
