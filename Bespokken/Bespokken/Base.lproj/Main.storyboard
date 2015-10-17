@@ -15,9 +15,24 @@
                     <view key="view" contentMode="scaleToFill" id="ULx-ic-uZE">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1gU-ER-jYZ">
+                                <rect key="frame" x="10" y="20" width="75" height="75"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Immediate Toggle"/>
+                                <connections>
+                                    <action selector="onImmediateButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="fcd-fS-dHK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.099356828664003083" green="1" blue="0.0021081246396479347" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="btnImmediateModeToggle" destination="1gU-ER-jYZ" id="Bgn-l7-BER"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zn-Wi-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +58,7 @@
                                     <segue destination="HoH-rj-Cou" kind="embed" identifier="containerViewEmbedSegue" id="yk9-vI-Rjl"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-7w-mjs">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-7w-mjs" userLabel="Toolbar">
                                 <rect key="frame" x="0.0" y="679" width="1024" height="89"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhr-79-1GV">
@@ -87,6 +102,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
@@ -116,6 +132,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <segue destination="DWW-mg-6fd" kind="show" identifier="showHome" customClass="EmptySegue" customModule="Bespokken" animates="NO" id="R3t-WP-n5d"/>
                         <segue destination="fHB-gV-KSl" kind="show" identifier="showHistory" customClass="EmptySegue" customModule="Bespokken" animates="NO" id="DYn-na-uvW"/>
@@ -140,6 +157,7 @@
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.092125669194269122" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwZ-bf-nBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,6 +177,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.3732334773766377" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oB1-6N-boc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
