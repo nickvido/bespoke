@@ -25,8 +25,48 @@
                                     <action selector="onImmediateButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="fcd-fS-dHK"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S5C-Y8-hJ4">
+                                <rect key="frame" x="303" y="103" width="701" height="558"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.88085750113973682" blue="0.013176209749718004" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pny-OJ-HCq">
+                                    <size key="itemSize" width="75" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Word" id="ghf-tL-sOT" customClass="WordCell" customModule="Bespokken">
+                                        <rect key="frame" x="10" y="10" width="75" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWG-CL-Ikl">
+                                                    <rect key="frame" x="16" y="27" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="lblName" destination="aWG-CL-Ikl" id="y50-uF-gDB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DWW-mg-6fd" id="0Ns-ev-XSf"/>
+                                    <outlet property="delegate" destination="DWW-mg-6fd" id="87h-ek-GBD"/>
+                                </connections>
+                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-Ew-pI0">
-                                <rect key="frame" x="10" y="103" width="285" height="570"/>
+                                <rect key="frame" x="20" y="103" width="275" height="558"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.099356828659999993" green="1" blue="0.0021081246399999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MSz-cA-gH4">
@@ -73,6 +113,7 @@
                     <connections>
                         <outlet property="btnImmediateModeToggle" destination="1gU-ER-jYZ" id="Bgn-l7-BER"/>
                         <outlet property="modesCollectionView" destination="jAh-Ew-pI0" id="mIO-Ew-zlA"/>
+                        <outlet property="wordsCollectionView" destination="S5C-Y8-hJ4" id="uQX-6T-kX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zn-Wi-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>

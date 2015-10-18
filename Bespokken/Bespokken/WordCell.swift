@@ -1,17 +1,17 @@
 //
-//  ModeCellCollectionViewCell.swift
+//  WordCellCollectionViewCell.swift
 //  Bespokken
 //
-//  Created by nickvido on 10/17/15.
+//  Created by nickvido on 10/18/15.
 //  Copyright © 2015 nickvido. All rights reserved.
 //
 
 import UIKit
 
-class ModeCell: UICollectionViewCell {
+class WordCell: UICollectionViewCell {
     @IBOutlet weak var lblName: UILabel!
     
-    func configureForItem(item: Mode) {
+    func configureForItem(item: Word) {
         lblName.text = item.name
         
         self.backgroundColor = UIColor.whiteColor()
@@ -20,4 +20,5 @@ class ModeCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
         self.lblName?.textAlignment = .Center
     }
+
 }

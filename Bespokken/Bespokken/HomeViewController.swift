@@ -10,12 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modesDataSource: CollectionViewDataSource?
+    var wordsDataSource: CollectionViewDataSource?
     
     var buttons = [UIButton]()
     var modes = [Mode]()
+    var words = [Word]()
     
     @IBOutlet weak var btnImmediateModeToggle: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
+    @IBOutlet weak var wordsCollectionView: UICollectionView!
     
     
     @IBAction func onImmediateButtonTapped(sender: AnyObject) {
@@ -36,8 +39,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
             button.titleLabel?.textAlignment = .Center
         }
         
+        // Setup modes
         loadModes()
-
         self.modesDataSource = CollectionViewDataSource(items: self.modes, reuseIdentifier: "Mode", configureBlock: { (cell, item) -> () in
             if let actualCell = cell as? ModeCell {
                 if let actualItem = item as? Mode {
@@ -45,9 +48,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
                 }
             }
         })
-        
         self.modesCollectionView.dataSource = self.modesDataSource
         
+        // Setup words
+        loadWords()
+        self.wordsDataSource = CollectionViewDataSource(items: self.words, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
+            if let actualCell = cell as? WordCell {
+                if let actualItem = item as? Word {
+                    actualCell.configureForItem(actualItem)
+                }
+            }
+        })
+        self.wordsCollectionView.dataSource = self.wordsDataSource
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,9 +76,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         self.modesCollectionView.reloadData()
     }
     
+    func loadWords() {
+        for i in 0...100 {
+            let w = Word(name: String(i))
+            words.append(w)
+        }
+        
+        self.wordsCollectionView.reloadData()
+    }
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let mode = modes[indexPath.item]
-        print("mode: \(mode.name)")
+        if collectionView == self.modesCollectionView {
+            let mode = modes[indexPath.item]
+            print("mode: \(mode.name)")
+            // TODO: Handle switch modes
+        }
+        else if collectionView == self.wordsCollectionView {
+            let word = words[indexPath.item]
+            print("word: \(word.name)")
+        }
     }
 
 }
