@@ -8,13 +8,14 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate {
+    var modesDataSource: CollectionViewDataSource?
+    
     var buttons = [UIButton]()
     var modes = [Mode]()
     
     @IBOutlet weak var btnImmediateModeToggle: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
-    
     
     
     @IBAction func onImmediateButtonTapped(sender: AnyObject) {
@@ -36,6 +37,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         loadModes()
+
+        self.modesDataSource = CollectionViewDataSource(items: self.modes, reuseIdentifier: "Mode", configureBlock: { (cell, item) -> () in
+            if let actualCell = cell as? ModeCell {
+                if let actualItem = item as? Mode {
+                    actualCell.configureForItem(actualItem)
+                }
+            }
+        })
+        
+        self.modesCollectionView.dataSource = self.modesDataSource
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,24 +62,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         self.modesCollectionView.reloadData()
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modes.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Mode", forIndexPath: indexPath) as! ModeCell
-        let mode = modes[indexPath.item]
-        
-        cell.lblName.text = mode.name
-        
-        cell.layer.borderColor = UIColor.blackColor().CGColor
-        cell.layer.backgroundColor = UIColor.whiteColor().CGColor
-        cell.layer.cornerRadius = 7
-        
-        return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

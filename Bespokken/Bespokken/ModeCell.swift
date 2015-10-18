@@ -10,4 +10,8 @@ import UIKit
 
 class ModeCell: UICollectionViewCell {
     @IBOutlet weak var lblName: UILabel!
+    
+    func configureForItem(item: Mode) {
+        lblName.text = item.name
+    }
 }
