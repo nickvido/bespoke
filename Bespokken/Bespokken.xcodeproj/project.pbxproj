@@ -13,6 +13,7 @@
 		F037E5091BD4347500B0F938 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50B1BD43A9300B0F938 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50A1BD43A9300B0F938 /* WordCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50D1BD43A9E00B0F938 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50C1BD43A9E00B0F938 /* Word.swift */; settings = {ASSET_TAGS = (); }; };
+		F05E0FDC1BD4505E00BA6C0F /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = F05E0FDB1BD4505E00BA6C0F /* words.txt */; settings = {ASSET_TAGS = (); }; };
 		F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */; };
 		F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */; };
 		F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F037E50A1BD43A9300B0F938 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F037E50C1BD43A9E00B0F938 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		F05E0FDB1BD4505E00BA6C0F /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bespokken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F05E0FDA1BD4504900BA6C0F /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				F05E0FDB1BD4505E00BA6C0F /* words.txt */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
 		F0C6D0E41BC9402F00CB4F37 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 		F0C6D0EF1BC9402F00CB4F37 /* Bespokken */ = {
 			isa = PBXGroup;
 			children = (
+				F05E0FDA1BD4504900BA6C0F /* Files */,
 				F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */,
 				F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */,
 				F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */,
@@ -264,6 +275,7 @@
 			files = (
 				F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */,
 				F0C6D0FB1BC9403000CB4F37 /* Assets.xcassets in Resources */,
+				F05E0FDC1BD4505E00BA6C0F /* words.txt in Resources */,
 				F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

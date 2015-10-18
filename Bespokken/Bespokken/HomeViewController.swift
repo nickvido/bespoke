@@ -77,12 +77,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func loadWords() {
-        for i in 0...100 {
-            let w = Word(name: String(i))
-            words.append(w)
+        if let wordsPath = NSBundle.mainBundle().pathForResource("words", ofType: "txt") {
+            if let contents = try? String(contentsOfFile: wordsPath, usedEncoding: nil) {
+                let lines = contents.componentsSeparatedByString("\n")
+                for (_, line) in lines.enumerate() {
+                    let word = Word(name: line)
+                    words.append(word)
+                }
+            }
         }
         
         self.wordsCollectionView.reloadData()
+        self.wordsCollectionView.invalidateIntrinsicContentSize()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -96,5 +102,4 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
             print("word: \(word.name)")
         }
     }
-
 }
