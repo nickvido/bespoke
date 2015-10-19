@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     var containerViewController: ContainerViewController!
+    var homeViewController: HomeViewController!
     var toolbarButtons = [UIButton]()
     
     @IBOutlet weak var containerView: UIView!
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnDayNight: UIButton!
     @IBOutlet weak var btnHistory: UIButton!
     @IBOutlet weak var btnShortCodes: UIButton!
+    @IBOutlet weak var btnSpacebar: UIButton!
     
     
     @IBAction func onHomeTapped(sender: AnyObject) {
@@ -35,6 +37,10 @@ class ViewController: UIViewController {
         self.containerViewController.showView("showShortCodes")
     }
     
+    @IBAction func onSpacebarTapped(sender: AnyObject) {
+        // Notify the Home view that spacebar was tapped
+        self.homeViewController.onSpacebarTapped()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +49,16 @@ class ViewController: UIViewController {
             print("view Controller: \(vc.title)")
             if vc.title == "Container" {
                 self.containerViewController = vc as? ContainerViewController
+                for cvc in self.containerViewController.childViewControllers {
+                    print("child view controller: \(cvc.title)")
+                    if cvc.title == "Home" {
+                        self.homeViewController = cvc as? HomeViewController
+                    }
+                }
             }
         }
         
-        toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes]
+        toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes, btnSpacebar]
         
         for button in toolbarButtons {
             button.backgroundColor = UIColor.whiteColor()

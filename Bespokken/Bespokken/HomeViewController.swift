@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate {
+public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
     
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBAction func onPlayButtonTapped(sender: AnyObject) {
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -47,6 +47,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         txtMain.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
         txtMain.layer.borderWidth = 1
         txtMain.layer.cornerRadius = 5
+        
+        modesCollectionView.backgroundColor = UIColor.whiteColor()
+        modesCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        modesCollectionView.layer.borderWidth = 1
+        modesCollectionView.layer.cornerRadius = 5
+        
+        wordsCollectionView.backgroundColor = UIColor.whiteColor()
+        wordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        wordsCollectionView.layer.borderWidth = 1
+        wordsCollectionView.layer.cornerRadius = 5
         
         // Setup modes
         loadModes()
@@ -71,7 +81,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         self.wordsCollectionView.dataSource = self.wordsDataSource
     }
     
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -100,7 +110,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         self.wordsCollectionView.invalidateIntrinsicContentSize()
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if collectionView == self.modesCollectionView {
             let mode = modes[indexPath.item]
             print("mode: \(mode.name)")
@@ -109,6 +119,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
             print("word: \(word.name)")
+            txtMain.text = txtMain.text.stringByAppendingString(word.name)
         }
+    }
+    
+    public func onSpacebarTapped() {
+        txtMain.text = txtMain.text.stringByAppendingString(" ")
     }
 }
