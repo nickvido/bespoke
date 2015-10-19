@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modesDataSource: CollectionViewDataSource?
@@ -22,11 +23,18 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var wordsCollectionView: UICollectionView!
     @IBOutlet weak var txtMain: UITextView!
     
+    let synth = AVSpeechSynthesizer()
+    var utterance = AVSpeechUtterance(string: "")
     
     @IBAction func onImmediateButtonTapped(sender: AnyObject) {
     }
     
     @IBAction func onPlayButtonTapped(sender: AnyObject) {
+        let text: String = txtMain.text
+        self.utterance = AVSpeechUtterance(string: text)
+        self.utterance.rate = 0.45
+        self.synth.speakUtterance(self.utterance)
+        txtMain.text = ""
     }
     
     public override func viewDidLoad() {
