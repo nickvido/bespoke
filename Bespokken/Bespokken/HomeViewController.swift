@@ -17,19 +17,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     var words = [Word]()
     
     @IBOutlet weak var btnImmediateModeToggle: UIButton!
+    @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
     @IBOutlet weak var wordsCollectionView: UICollectionView!
+    //@IBOutlet weak var txtMain: UITextView!
     
     
     @IBAction func onImmediateButtonTapped(sender: AnyObject) {
     }
     
+    @IBAction func onPlayButtonTapped(sender: AnyObject) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        buttons += [btnImmediateModeToggle]
+        buttons += [btnImmediateModeToggle, btnPlay]
         
         for button in buttons {
             button.backgroundColor = UIColor.whiteColor()
@@ -38,6 +42,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
             button.layer.cornerRadius = 5
             button.titleLabel?.textAlignment = .Center
         }
+        
+        //txtMain.backgroundColor = UIColor.whiteColor()
+        //txtMain.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        //txtMain.layer.borderWidth = 1
+        //txtMain.layer.cornerRadius = 5
         
         // Setup modes
         loadModes()
