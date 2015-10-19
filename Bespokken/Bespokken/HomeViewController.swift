@@ -97,14 +97,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func loadModes() {
-        modes.append(Mode(name: "Names"))
-        modes.append(Mode(name: "Verbs"))
+        modes.append(Mode(name: "Greetings"))
         modes.append(Mode(name: "Telephone"))
-        modes.append(Mode(name: "Time"))
-        modes.append(Mode(name: "Food"))
-        modes.append(Mode(name: "Emotions"))
+        modes.append(Mode(name: "Names"))
         modes.append(Mode(name: "Adjectives"))
+        modes.append(Mode(name: "Verbs"))
         modes.append(Mode(name: "Anatomy"))
+        modes.append(Mode(name: "Time"))
+        modes.append(Mode(name: "Emotions"))
+        modes.append(Mode(name: "Food"))       
         modes.append(Mode(name: "Animals"))
         modes.append(Mode(name: "Birds"))
         modes.append(Mode(name: "Cars"))
