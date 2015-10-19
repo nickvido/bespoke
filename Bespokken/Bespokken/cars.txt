@@ -1,0 +1,21 @@
+Cadillac
+Chevy
+Impala
+Caprice
+Chevrolet
+Ford
+Jeep
+engine
+brakes
+fuel
+transmission
+GMC
+Ferrari
+Porsche
+Lamborghini
+Mustang
+coupe
+drop-top
+fast
+drag strip
+NASCAR

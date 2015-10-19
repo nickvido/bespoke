@@ -1,0 +1,21 @@
+fish
+fishing
+cast
+reel
+rod
+line
+pike
+walleye
+small mouth
+large mouth
+bass
+rock bass
+perch
+croppie
+catfish
+trout
+saugeye
+tuna
+shark
+salmon
+sardine

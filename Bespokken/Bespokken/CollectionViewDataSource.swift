@@ -23,6 +23,10 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         super.init()
     }
     
+    func setDataItems(items: NSArray) {
+        self.items = items
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }

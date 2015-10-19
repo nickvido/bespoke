@@ -17,6 +17,8 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modes = [Mode]()
     var words = [Word]()
     
+    var currentMode = ""
+    
     @IBOutlet weak var btnImmediateModeToggle: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
@@ -95,16 +97,36 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func loadModes() {
-        for i in 0...100 {
-            let m = Mode(name: String(i))
-            modes.append(m)
-        }
+        modes.append(Mode(name: "Names"))
+        modes.append(Mode(name: "Verbs"))
+        modes.append(Mode(name: "Telephone"))
+        modes.append(Mode(name: "Time"))
+        modes.append(Mode(name: "Food"))
+        modes.append(Mode(name: "Emotions"))
+        modes.append(Mode(name: "Adjectives"))
+        modes.append(Mode(name: "Anatomy"))
+        modes.append(Mode(name: "Animals"))
+        modes.append(Mode(name: "Birds"))
+        modes.append(Mode(name: "Cars"))
+        modes.append(Mode(name: "Colors"))
+        modes.append(Mode(name: "Fish"))
+        modes.append(Mode(name: "Music"))
+        modes.append(Mode(name: "People"))
+        modes.append(Mode(name: "Places"))
+        modes.append(Mode(name: "Trees"))
+        modes.append(Mode(name: "Verbs"))
+        modes.append(Mode(name: "Weather"))
+        
         
         self.modesCollectionView.reloadData()
     }
     
-    func loadWords() {
-        if let wordsPath = NSBundle.mainBundle().pathForResource("words", ofType: "txt") {
+    func loadWords(mode: String = "Names") {
+        if mode == currentMode {
+            return
+        }
+        words.removeAll()
+        if let wordsPath = NSBundle.mainBundle().pathForResource(mode.lowercaseString, ofType: "txt") {
             if let contents = try? String(contentsOfFile: wordsPath, usedEncoding: nil) {
                 let lines = contents.componentsSeparatedByString("\n")
                 for (_, line) in lines.enumerate() {
@@ -113,16 +135,18 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
                 }
             }
         }
+        self.wordsDataSource?.setDataItems(words)
+        currentMode = mode
         
         self.wordsCollectionView.reloadData()
-        self.wordsCollectionView.invalidateIntrinsicContentSize()
     }
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if collectionView == self.modesCollectionView {
             let mode = modes[indexPath.item]
             print("mode: \(mode.name)")
-            // TODO: Handle switch modes
+            // Handle switch modes
+            loadWords(mode.name)
         }
         else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
