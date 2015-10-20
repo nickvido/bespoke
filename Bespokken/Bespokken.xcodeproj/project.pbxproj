@@ -13,6 +13,7 @@
 		F037E5091BD4347500B0F938 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50B1BD43A9300B0F938 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50A1BD43A9300B0F938 /* WordCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50D1BD43A9E00B0F938 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50C1BD43A9E00B0F938 /* Word.swift */; settings = {ASSET_TAGS = (); }; };
+		F07F490E1BD5CDC6005600EF /* fastwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = F07F490D1BD5CDC6005600EF /* fastwords.txt */; settings = {ASSET_TAGS = (); }; };
 		F0968B791BD480A200111604 /* names.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B781BD480A200111604 /* names.txt */; settings = {ASSET_TAGS = (); }; };
 		F0968B7B1BD481AF00111604 /* verbs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B7A1BD481AF00111604 /* verbs.txt */; settings = {ASSET_TAGS = (); }; };
 		F0968B7D1BD481B900111604 /* telephone.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B7C1BD481B900111604 /* telephone.txt */; settings = {ASSET_TAGS = (); }; };
@@ -70,6 +71,7 @@
 		F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F037E50A1BD43A9300B0F938 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F037E50C1BD43A9E00B0F938 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		F07F490D1BD5CDC6005600EF /* fastwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fastwords.txt; sourceTree = "<group>"; };
 		F0968B781BD480A200111604 /* names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = names.txt; sourceTree = "<group>"; };
 		F0968B7A1BD481AF00111604 /* verbs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = verbs.txt; sourceTree = "<group>"; };
 		F0968B7C1BD481B900111604 /* telephone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = telephone.txt; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				F0968B8E1BD48A5200111604 /* cars.txt */,
 				F0968B8A1BD489D000111604 /* colors.txt */,
 				F0968B801BD484A200111604 /* emotions.txt */,
+				F07F490D1BD5CDC6005600EF /* fastwords.txt */,
 				F0968B941BD48E1800111604 /* fish.txt */,
 				F0968B7E1BD4849800111604 /* food.txt */,
 				F0968B9C1BD4969B00111604 /* greetings.txt */,
@@ -333,6 +336,7 @@
 				F0968B811BD484A200111604 /* emotions.txt in Resources */,
 				F0968B971BD48FB600111604 /* people.txt in Resources */,
 				F0968B9D1BD4969B00111604 /* greetings.txt in Resources */,
+				F07F490E1BD5CDC6005600EF /* fastwords.txt in Resources */,
 				F0968B7F1BD4849800111604 /* food.txt in Resources */,
 				F0968B8B1BD489D000111604 /* colors.txt in Resources */,
 				F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */,

@@ -18,6 +18,6 @@ class ModeCell: UICollectionViewCell {
         self.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5
-        self.lblName?.textAlignment = .Center
+        //self.lblName?.textAlignment = .Center
     }
 }

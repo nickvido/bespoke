@@ -12,10 +12,12 @@ import AVFoundation
 public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
+    var fastwordsDataSource: CollectionViewDataSource?
     
     var buttons = [UIButton]()
     var modes = [Mode]()
     var words = [Word]()
+    var fastwords = [Word]()
     
     var currentMode = ""
     
@@ -26,6 +28,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var btnPlayLeft: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
     @IBOutlet weak var wordsCollectionView: UICollectionView!
+    @IBOutlet weak var fastwordsCollectionView: UICollectionView!
     @IBOutlet weak var txtMain: UITextView!
     
     
@@ -40,7 +43,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     func doPlay() {
         let text: String = txtMain.text
         self.utterance = AVSpeechUtterance(string: text)
-        self.utterance.rate = 0.45
+        self.utterance.rate = 0.4
         self.synth.speakUtterance(self.utterance)
         txtMain.text = ""
     }
@@ -74,6 +77,11 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         wordsCollectionView.layer.borderWidth = 1
         wordsCollectionView.layer.cornerRadius = 5
         
+        fastwordsCollectionView.backgroundColor = UIColor.whiteColor()
+        fastwordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        fastwordsCollectionView.layer.borderWidth = 1
+        fastwordsCollectionView.layer.cornerRadius = 5
+        
         // Setup modes
         loadModes()
         self.modesDataSource = CollectionViewDataSource(items: self.modes, reuseIdentifier: "Mode", configureBlock: { (cell, item) -> () in
@@ -95,6 +103,17 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             }
         })
         self.wordsCollectionView.dataSource = self.wordsDataSource
+        
+        loadFastwords()
+        self.fastwordsDataSource = CollectionViewDataSource(items: self.fastwords, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
+            if let actualCell = cell as? WordCell {
+                if let actualItem = item as? Word {
+                    actualCell.configureForItem(actualItem)
+                }
+            }
+        })
+        self.fastwordsCollectionView.dataSource = self.fastwordsDataSource
+
     }
     
     public override func didReceiveMemoryWarning() {
@@ -124,7 +143,6 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         modes.append(Mode(name: "Verbs"))
         modes.append(Mode(name: "Weather"))
         
-        
         self.modesCollectionView.reloadData()
     }
     
@@ -143,10 +161,25 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             }
         }
         self.wordsDataSource?.setDataItems(words)
-        currentMode = mode
-        
+        currentMode = mode        
         self.wordsCollectionView.reloadData()
     }
+    
+    func loadFastwords() {
+        fastwords.removeAll()
+        if let wordsPath = NSBundle.mainBundle().pathForResource("fastwords", ofType: "txt") {
+            if let contents = try? String(contentsOfFile: wordsPath, usedEncoding: nil) {
+                let lines = contents.componentsSeparatedByString("\n")
+                for (_, line) in lines.enumerate() {
+                    let word = Word(name: line)
+                    fastwords.append(word)
+                }
+            }
+        }
+        self.fastwordsDataSource?.setDataItems(fastwords)
+        self.fastwordsCollectionView.reloadData()
+    }
+
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if collectionView == self.modesCollectionView {
@@ -154,10 +187,13 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             print("mode: \(mode.name)")
             // Handle switch modes
             loadWords(mode.name)
-        }
-        else if collectionView == self.wordsCollectionView {
+        } else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
             print("word: \(word.name)")
+            txtMain.text = txtMain.text.stringByAppendingString(word.name)
+        } else if collectionView == self.fastwordsCollectionView {
+            let word = fastwords[indexPath.item]
+            print ("fastword: \(word.name)")
             txtMain.text = txtMain.text.stringByAppendingString(word.name)
         }
     }
