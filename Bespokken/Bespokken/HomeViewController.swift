@@ -67,12 +67,12 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         txtMain.layer.borderWidth = 1
         txtMain.layer.cornerRadius = 5
         
-        modesCollectionView.backgroundColor = UIColor.whiteColor()
+        modesCollectionView.backgroundColor = UIColor.darkGrayColor()
         modesCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
         modesCollectionView.layer.borderWidth = 1
         modesCollectionView.layer.cornerRadius = 5
         
-        wordsCollectionView.backgroundColor = UIColor.whiteColor()
+        wordsCollectionView.backgroundColor = UIColor.lightGrayColor()
         wordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
         wordsCollectionView.layer.borderWidth = 1
         wordsCollectionView.layer.cornerRadius = 5

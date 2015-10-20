@@ -1,3 +1,4 @@
+a
 I
 we
 am
@@ -14,7 +15,6 @@ my
 your
 and
 the
-when
 this
 why
 how
