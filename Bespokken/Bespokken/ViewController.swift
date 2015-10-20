@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnHistory: UIButton!
     @IBOutlet weak var btnShortCodes: UIButton!
     @IBOutlet weak var btnSpacebar: UIButton!
+    @IBOutlet weak var btnSpacebarRight: UIButton!
     
     
     @IBAction func onHomeTapped(sender: AnyObject) {
@@ -38,9 +39,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onSpacebarTapped(sender: AnyObject) {
+        doSpacebar()
+    }
+    
+    @IBAction func onSpacebarRightTapped(sender: AnyObject) {
+        doSpacebar()
+    }
+    
+    func doSpacebar() {
         // Notify the Home view that spacebar was tapped
         self.homeViewController.onSpacebarTapped()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +68,7 @@ class ViewController: UIViewController {
             }
         }
         
-        toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes, btnSpacebar]
+        toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes, btnSpacebar, btnSpacebarRight]
         
         for button in toolbarButtons {
             button.backgroundColor = UIColor.whiteColor()

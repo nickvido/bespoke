@@ -160,14 +160,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzN-Ot-JpA">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.061523099769999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="HoH-rj-Cou" kind="embed" identifier="containerViewEmbedSegue" id="yk9-vI-Rjl"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-7w-mjs" userLabel="Toolbar">
                                 <rect key="frame" x="0.0" y="679" width="1024" height="89"/>
                                 <subviews>
@@ -179,16 +171,33 @@
                                             <action selector="onSpacebarTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZHW-mH-d56"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZQ-aD-V1R">
+                                        <rect key="frame" x="755" y="10" width="261" height="73"/>
+                                        <animations/>
+                                        <state key="normal" title="Spacebar"/>
+                                        <connections>
+                                            <action selector="onSpacebarRightTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iws-qT-GAu"/>
+                                            <action selector="onSpacebarTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DHM-f5-waO"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhr-79-1GV">
-                                        <rect key="frame" x="606" y="8" width="75" height="75"/>
+                                        <rect key="frame" x="529" y="8" width="75" height="75"/>
                                         <animations/>
                                         <state key="normal" title="History"/>
                                         <connections>
                                             <action selector="onHistoryTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXF-uj-QcT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sTj-Uz-OpN">
+                                        <rect key="frame" x="635" y="8" width="75" height="75"/>
+                                        <animations/>
+                                        <state key="normal" title="Short Codes"/>
+                                        <connections>
+                                            <action selector="onShortCodesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZUy-tM-tYl"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-qg-UiY">
-                                        <rect key="frame" x="494" y="8" width="75" height="75"/>
+                                        <rect key="frame" x="417" y="8" width="75" height="75"/>
                                         <animations/>
                                         <state key="normal" title="Day / Night"/>
                                         <connections>
@@ -196,7 +205,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-9t-vPq">
-                                        <rect key="frame" x="392" y="6" width="75" height="75"/>
+                                        <rect key="frame" x="315" y="6" width="75" height="75"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Home"/>
@@ -204,18 +213,18 @@
                                             <action selector="onHomeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vst-Z3-Csb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sTj-Uz-OpN">
-                                        <rect key="frame" x="712" y="8" width="75" height="75"/>
-                                        <animations/>
-                                        <state key="normal" title="Short Codes"/>
-                                        <connections>
-                                            <action selector="onShortCodesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZUy-tM-tYl"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzN-Ot-JpA">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.061523099769999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="HoH-rj-Cou" kind="embed" identifier="containerViewEmbedSegue" id="yk9-vI-Rjl"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -230,6 +239,7 @@
                         <outlet property="btnHome" destination="BZz-9t-vPq" id="Z4y-HC-CEZ"/>
                         <outlet property="btnShortCodes" destination="sTj-Uz-OpN" id="kXd-ll-gLS"/>
                         <outlet property="btnSpacebar" destination="A8Q-cV-0kk" id="N1X-Qv-QEN"/>
+                        <outlet property="btnSpacebarRight" destination="IZQ-aD-V1R" id="Gwo-Il-U95"/>
                         <outlet property="containerView" destination="lzN-Ot-JpA" id="Mde-ld-ha4"/>
                     </connections>
                 </viewController>
