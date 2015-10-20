@@ -19,19 +19,25 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     var currentMode = ""
     
-    @IBOutlet weak var btnImmediateModeToggle: UIButton!
+    let synth = AVSpeechSynthesizer()
+    var utterance = AVSpeechUtterance(string: "")
+    
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnPlayLeft: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
     @IBOutlet weak var wordsCollectionView: UICollectionView!
     @IBOutlet weak var txtMain: UITextView!
     
-    let synth = AVSpeechSynthesizer()
-    var utterance = AVSpeechUtterance(string: "")
     
-    @IBAction func onImmediateButtonTapped(sender: AnyObject) {
+    @IBAction func onLeftPlayButtonTapped(sender: AnyObject) {
+        doPlay()
     }
     
     @IBAction func onPlayButtonTapped(sender: AnyObject) {
+        doPlay()
+    }
+    
+    func doPlay() {
         let text: String = txtMain.text
         self.utterance = AVSpeechUtterance(string: text)
         self.utterance.rate = 0.45
@@ -43,7 +49,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        buttons += [btnImmediateModeToggle, btnPlay]
+        buttons += [btnPlayLeft, btnPlay]
         
         for button in buttons {
             button.backgroundColor = UIColor.whiteColor()

@@ -16,16 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="681"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1gU-ER-jYZ">
-                                <rect key="frame" x="10" y="20" width="75" height="75"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Immediate Toggle"/>
-                                <connections>
-                                    <action selector="onImmediateButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="fcd-fS-dHK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vhd-4O-cN5">
                                 <rect key="frame" x="929" y="20" width="75" height="75"/>
                                 <animations/>
@@ -33,12 +23,22 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <action selector="onImmediateButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="Y9h-OZ-PIS"/>
                                     <action selector="onPlayButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="JXX-nu-7vI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Q45-WX-cmA">
+                                <rect key="frame" x="20" y="20" width="75" height="75"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="onLeftPlayButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="8Vd-Hp-FWq"/>
+                                    <action selector="onPlayButtonTapped:" destination="DWW-mg-6fd" eventType="touchUpInside" id="RYs-LA-7aI"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4vf-kJ-KPs">
-                                <rect key="frame" x="93" y="20" width="828" height="75"/>
+                                <rect key="frame" x="103" y="20" width="818" height="75"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Hello ">
@@ -137,8 +137,8 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
-                        <outlet property="btnImmediateModeToggle" destination="1gU-ER-jYZ" id="Bgn-l7-BER"/>
                         <outlet property="btnPlay" destination="vhd-4O-cN5" id="ZOI-4b-jkp"/>
+                        <outlet property="btnPlayLeft" destination="Q45-WX-cmA" id="Y6h-cN-mn3"/>
                         <outlet property="modesCollectionView" destination="jAh-Ew-pI0" id="mIO-Ew-zlA"/>
                         <outlet property="txtMain" destination="4vf-kJ-KPs" id="7K2-A8-ccl"/>
                         <outlet property="wordsCollectionView" destination="S5C-Y8-hJ4" id="uQX-6T-kX1"/>
@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zn-Wi-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="-789.5"/>
+            <point key="canvasLocation" x="1825" y="-783.5"/>
         </scene>
         <!--Main-->
         <scene sceneID="tne-QT-ifu">

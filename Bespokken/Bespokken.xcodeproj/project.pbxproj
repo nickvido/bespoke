@@ -13,7 +13,25 @@
 		F037E5091BD4347500B0F938 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50B1BD43A9300B0F938 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50A1BD43A9300B0F938 /* WordCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F037E50D1BD43A9E00B0F938 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50C1BD43A9E00B0F938 /* Word.swift */; settings = {ASSET_TAGS = (); }; };
-		F05E0FDC1BD4505E00BA6C0F /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = F05E0FDB1BD4505E00BA6C0F /* words.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B791BD480A200111604 /* names.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B781BD480A200111604 /* names.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B7B1BD481AF00111604 /* verbs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B7A1BD481AF00111604 /* verbs.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B7D1BD481B900111604 /* telephone.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B7C1BD481B900111604 /* telephone.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B7F1BD4849800111604 /* food.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B7E1BD4849800111604 /* food.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B811BD484A200111604 /* emotions.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B801BD484A200111604 /* emotions.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B831BD484AA00111604 /* anatomy.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B821BD484AA00111604 /* anatomy.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B851BD4872900111604 /* birds.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B841BD4872900111604 /* birds.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B871BD4874200111604 /* animals.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B861BD4874200111604 /* animals.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B891BD4874900111604 /* adjectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B881BD4874900111604 /* adjectives.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B8B1BD489D000111604 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B8A1BD489D000111604 /* colors.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B8D1BD48A2700111604 /* music.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B8C1BD48A2700111604 /* music.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B8F1BD48A5200111604 /* cars.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B8E1BD48A5200111604 /* cars.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B911BD48D7100111604 /* places.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B901BD48D7100111604 /* places.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B931BD48DDA00111604 /* trees.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B921BD48DDA00111604 /* trees.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B951BD48E1800111604 /* fish.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B941BD48E1800111604 /* fish.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B971BD48FB600111604 /* people.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B961BD48FB600111604 /* people.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B991BD4928E00111604 /* weather.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B981BD4928E00111604 /* weather.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B9B1BD494DC00111604 /* time.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B9A1BD494DC00111604 /* time.txt */; settings = {ASSET_TAGS = (); }; };
+		F0968B9D1BD4969B00111604 /* greetings.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B9C1BD4969B00111604 /* greetings.txt */; settings = {ASSET_TAGS = (); }; };
 		F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */; };
 		F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */; };
 		F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */; };
@@ -52,7 +70,25 @@
 		F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F037E50A1BD43A9300B0F938 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F037E50C1BD43A9E00B0F938 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		F05E0FDB1BD4505E00BA6C0F /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		F0968B781BD480A200111604 /* names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = names.txt; sourceTree = "<group>"; };
+		F0968B7A1BD481AF00111604 /* verbs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = verbs.txt; sourceTree = "<group>"; };
+		F0968B7C1BD481B900111604 /* telephone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = telephone.txt; sourceTree = "<group>"; };
+		F0968B7E1BD4849800111604 /* food.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = food.txt; sourceTree = "<group>"; };
+		F0968B801BD484A200111604 /* emotions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = emotions.txt; sourceTree = "<group>"; };
+		F0968B821BD484AA00111604 /* anatomy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = anatomy.txt; sourceTree = "<group>"; };
+		F0968B841BD4872900111604 /* birds.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = birds.txt; sourceTree = "<group>"; };
+		F0968B861BD4874200111604 /* animals.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animals.txt; sourceTree = "<group>"; };
+		F0968B881BD4874900111604 /* adjectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = adjectives.txt; sourceTree = "<group>"; };
+		F0968B8A1BD489D000111604 /* colors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors.txt; sourceTree = "<group>"; };
+		F0968B8C1BD48A2700111604 /* music.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = music.txt; sourceTree = "<group>"; };
+		F0968B8E1BD48A5200111604 /* cars.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cars.txt; sourceTree = "<group>"; };
+		F0968B901BD48D7100111604 /* places.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = places.txt; sourceTree = "<group>"; };
+		F0968B921BD48DDA00111604 /* trees.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trees.txt; sourceTree = "<group>"; };
+		F0968B941BD48E1800111604 /* fish.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fish.txt; sourceTree = "<group>"; };
+		F0968B961BD48FB600111604 /* people.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = people.txt; sourceTree = "<group>"; };
+		F0968B981BD4928E00111604 /* weather.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = weather.txt; sourceTree = "<group>"; };
+		F0968B9A1BD494DC00111604 /* time.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = time.txt; sourceTree = "<group>"; };
+		F0968B9C1BD4969B00111604 /* greetings.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greetings.txt; sourceTree = "<group>"; };
 		F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bespokken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +137,25 @@
 		F05E0FDA1BD4504900BA6C0F /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				F05E0FDB1BD4505E00BA6C0F /* words.txt */,
+				F0968B881BD4874900111604 /* adjectives.txt */,
+				F0968B821BD484AA00111604 /* anatomy.txt */,
+				F0968B861BD4874200111604 /* animals.txt */,
+				F0968B841BD4872900111604 /* birds.txt */,
+				F0968B8E1BD48A5200111604 /* cars.txt */,
+				F0968B8A1BD489D000111604 /* colors.txt */,
+				F0968B801BD484A200111604 /* emotions.txt */,
+				F0968B941BD48E1800111604 /* fish.txt */,
+				F0968B7E1BD4849800111604 /* food.txt */,
+				F0968B9C1BD4969B00111604 /* greetings.txt */,
+				F0968B8C1BD48A2700111604 /* music.txt */,
+				F0968B781BD480A200111604 /* names.txt */,
+				F0968B961BD48FB600111604 /* people.txt */,
+				F0968B901BD48D7100111604 /* places.txt */,
+				F0968B7C1BD481B900111604 /* telephone.txt */,
+				F0968B9A1BD494DC00111604 /* time.txt */,
+				F0968B921BD48DDA00111604 /* trees.txt */,
+				F0968B7A1BD481AF00111604 /* verbs.txt */,
+				F0968B981BD4928E00111604 /* weather.txt */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -273,10 +327,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0968B911BD48D7100111604 /* places.txt in Resources */,
+				F0968B9B1BD494DC00111604 /* time.txt in Resources */,
+				F0968B991BD4928E00111604 /* weather.txt in Resources */,
+				F0968B811BD484A200111604 /* emotions.txt in Resources */,
+				F0968B971BD48FB600111604 /* people.txt in Resources */,
+				F0968B9D1BD4969B00111604 /* greetings.txt in Resources */,
+				F0968B7F1BD4849800111604 /* food.txt in Resources */,
+				F0968B8B1BD489D000111604 /* colors.txt in Resources */,
 				F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */,
+				F0968B8F1BD48A5200111604 /* cars.txt in Resources */,
+				F0968B7B1BD481AF00111604 /* verbs.txt in Resources */,
 				F0C6D0FB1BC9403000CB4F37 /* Assets.xcassets in Resources */,
-				F05E0FDC1BD4505E00BA6C0F /* words.txt in Resources */,
+				F0968B851BD4872900111604 /* birds.txt in Resources */,
+				F0968B891BD4874900111604 /* adjectives.txt in Resources */,
+				F0968B831BD484AA00111604 /* anatomy.txt in Resources */,
+				F0968B791BD480A200111604 /* names.txt in Resources */,
 				F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */,
+				F0968B7D1BD481B900111604 /* telephone.txt in Resources */,
+				F0968B8D1BD48A2700111604 /* music.txt in Resources */,
+				F0968B871BD4874200111604 /* animals.txt in Resources */,
+				F0968B951BD48E1800111604 /* fish.txt in Resources */,
+				F0968B931BD48DDA00111604 /* trees.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
