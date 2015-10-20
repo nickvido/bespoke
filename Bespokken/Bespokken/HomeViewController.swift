@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Darwin
+
 
 public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modesDataSource: CollectionViewDataSource?
@@ -26,6 +28,8 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var btnPlayLeft: UIButton!
+    @IBOutlet weak var btnBackspace: UIButton!
+    @IBOutlet weak var btnClear: UIButton!
     @IBOutlet weak var modesCollectionView: UICollectionView!
     @IBOutlet weak var wordsCollectionView: UICollectionView!
     @IBOutlet weak var fastwordsCollectionView: UICollectionView!
@@ -40,6 +44,20 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         doPlay()
     }
     
+    @IBAction func onBtnBackspaceTapped(sender: AnyObject) {
+        //let li: Int? = lastIndexOf(txtMain.text, needle: " ")
+        //if li != nil {
+        //    txtMain.text = txtMain.text.substringToIndex(txtMain.text.startIndex.advancedBy(li!))
+        //} else {
+        //    txtMain.text = ""
+        //}
+    }
+    
+    @IBAction func onButtonClearTapped(sender: AnyObject) {
+        txtMain.text = ""
+    }
+    
+    
     func doPlay() {
         let text: String = txtMain.text
         self.utterance = AVSpeechUtterance(string: text)
@@ -52,7 +70,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        buttons += [btnPlayLeft, btnPlay]
+        buttons += [btnPlayLeft, btnPlay, btnBackspace, btnClear]
         
         for button in buttons {
             button.backgroundColor = UIColor.whiteColor()
@@ -161,7 +179,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             }
         }
         self.wordsDataSource?.setDataItems(words)
-        currentMode = mode        
+        currentMode = mode
         self.wordsCollectionView.reloadData()
     }
     

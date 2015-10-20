@@ -5,3 +5,7 @@ How are you?
 What's going on?
 How's it going
 What's up?
+good morning
+good afternoon
+good evening
+good night
