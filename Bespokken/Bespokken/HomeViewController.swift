@@ -10,8 +10,9 @@ import UIKit
 import AVFoundation
 import Darwin
 
-
 public class HomeViewController: UIViewController, UICollectionViewDelegate {
+    let audioPlayer = AudioPlayer()
+    
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
     var fastwordsDataSource: CollectionViewDataSource?
@@ -59,10 +60,79 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     
     func doPlay() {
-        let text: String = txtMain.text
-        self.utterance = AVSpeechUtterance(string: text)
-        self.utterance.rate = 0.4
-        self.synth.speakUtterance(self.utterance)
+        var text: String = txtMain.text
+        
+        // Strip any leading and trailing whitespace and punctuation
+        text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        text = text.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        text = text.stringByReplacingOccurrencesOfString("?", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        text = text.stringByReplacingOccurrencesOfString("!", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        text = text.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        text = text.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        text = text.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        let wordArray: [String] = text.componentsSeparatedByString(" ")
+        
+        var list = [AudioFile]()
+        
+        // Parse the sentence to see if there are recordings of words
+        var testFilename: String = ""
+        var goodFilename: String = ""
+        var i: Int = 0
+        let depth: Int = 5   // words strings up to x long
+        while i < wordArray.count {
+            let word: String = wordArray[i].lowercaseString
+            goodFilename = word
+            testFilename = goodFilename
+            
+            // try to build the longest word string possible
+            // search depth first down to one extra word
+            for d in (1...depth).reverse() {
+                testFilename = goodFilename
+                if (i+d) < wordArray.count {
+                    for j in 1...d {
+                        // build the word string to this depth
+                        let nextword: String = wordArray[i+j].lowercaseString
+                        testFilename = testFilename + "_" + nextword
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") == nil {
+                        continue         // this doesn't exist, try a shorter string
+                    } else {
+                        // found a consecutive word string that exists
+                        goodFilename = testFilename
+                        i = i+d       // consume the words
+                        break         // quit the depth search
+                    }
+                } else {
+                    continue          // the proposed depth was too long for the text
+                }
+            }
+            
+            let path: String? = NSBundle.mainBundle().pathForResource(goodFilename, ofType: "wav")
+            if path != nil {
+                let url: NSURL? = NSURL.fileURLWithPath(path!)
+                print("path = \(path)")
+                if url != nil {
+                    list.append(AudioFile(word, url!))
+                }
+            } else {
+                print("Could not locate file: \(word).wav")
+            }
+            
+            // consume the word string
+            i = i+1
+        }
+        
+        if list.count > 0 {
+            audioPlayer.playSong(0, songsList: list)
+        }
+        
+        // TODO: Divide the sentence into recorded words and text-to-speech words
+        // TODO: interleave the recordings with the text-to-speech        
+        
+        //self.utterance = AVSpeechUtterance(string: text)
+        //self.utterance.rate = 0.4
+        //self.synth.speakUtterance(self.utterance)
         txtMain.text = ""
     }
     
