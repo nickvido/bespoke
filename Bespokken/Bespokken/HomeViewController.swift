@@ -87,19 +87,48 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             
             // try to build the longest word string possible
             // search depth first down to one extra word
-            for d in (1...depth).reverse() {
+            for d in (0...depth).reverse() {
                 testFilename = goodFilename
                 if (i+d) < wordArray.count {
-                    for j in 1...d {
-                        // build the word string to this depth
-                        let nextword: String = wordArray[i+j].lowercaseString
-                        testFilename = testFilename + "_" + nextword
+                    if d > 0 {
+                        for j in 1...d {
+                            // build the word string to this depth
+                            let nextword: String = wordArray[i+j].lowercaseString
+                            testFilename = testFilename + "_" + nextword
+                        }
                     }
-                    if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") == nil {
-                        continue         // this doesn't exist, try a shorter string
+                    var goodFilenames: [String] = [String]()
+                    
+                    // find all the potential matching file names for this combination
+                    // add them to a list which will be selected from at random
+                    if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") != nil {
+                        goodFilenames.append(testFilename)
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_001", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_001")
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_002", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_002")
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_003", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_003")
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_004", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_004")
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_005", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_005")
+                    }
+                    if NSBundle.mainBundle().pathForResource(testFilename + "_006", ofType: "wav") != nil {
+                        goodFilenames.append(testFilename + "_006")
+                    }
+                    
+                    if goodFilenames.count == 0 {
+                        continue      // no filenames found
                     } else {
+                        let diceRoll = Int(arc4random_uniform(UInt32(goodFilenames.count)))
                         // found a consecutive word string that exists
-                        goodFilename = testFilename
+                        goodFilename = goodFilenames[diceRoll]
                         i = i+d       // consume the words
                         break         // quit the depth search
                     }
@@ -287,6 +316,8 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     public func onSpacebarTapped() {
-        txtMain.text = txtMain.text.stringByAppendingString(" ")
+        var text = txtMain.text
+        text = text.stringByAppendingString(" ")
+        txtMain.text = text
     }
 }
