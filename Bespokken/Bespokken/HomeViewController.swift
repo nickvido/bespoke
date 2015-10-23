@@ -84,6 +84,11 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
             let word: String = wordArray[i].lowercaseString
             goodFilename = word
             testFilename = goodFilename
+            if goodFilename == "" {
+                // catch empty strings
+                i = i+1
+                continue
+            }
             
             // try to build the longest word string possible
             // search depth first down to one extra word
