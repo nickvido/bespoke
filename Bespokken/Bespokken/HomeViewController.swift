@@ -221,6 +221,12 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         self.utt = self.utt + ttst.utterance + " "
         self.utterance = AVSpeechUtterance(string: self.utt)
         self.utterance.rate = 0.4
+        self.utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            //en-GB
+            //en-IE
+            //en-US
+            //en-US"
+        
         if doPlay {
             self.synth.speakUtterance(self.utterance)
             self.utt = ""
@@ -245,6 +251,10 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for voice in AVSpeechSynthesisVoice.speechVoices() {
+            print("\(voice.language)");
+        }
         
         // Do any additional setup after loading the view.
         buttons += [btnPlayLeft, btnPlay, btnBackspace, btnClear]
@@ -324,14 +334,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     func loadModes() {
         modes.append(Mode(name: "Greetings"))
+        modes.append(Mode(name: "Food"))
         modes.append(Mode(name: "Telephone"))
         modes.append(Mode(name: "Names"))
         modes.append(Mode(name: "Adjectives"))
         modes.append(Mode(name: "Verbs"))
+        modes.append(Mode(name: "Emotions"))
+        modes.append(Mode(name: "Verbs"))        
         modes.append(Mode(name: "Anatomy"))
         modes.append(Mode(name: "Time"))
-        modes.append(Mode(name: "Emotions"))
-        modes.append(Mode(name: "Food"))       
         modes.append(Mode(name: "Animals"))
         modes.append(Mode(name: "Birds"))
         modes.append(Mode(name: "Cars"))
@@ -341,7 +352,6 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         modes.append(Mode(name: "People"))
         modes.append(Mode(name: "Places"))
         modes.append(Mode(name: "Trees"))
-        modes.append(Mode(name: "Verbs"))
         modes.append(Mode(name: "Weather"))
         
         self.modesCollectionView.reloadData()

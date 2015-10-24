@@ -1,12 +1,7 @@
-go
 remember
-be
-eat
 have
 run
 see
-do
-can
 read
 play
 write
@@ -48,7 +43,6 @@ dance
 type
 punch
 rip
-tear
 tie
 plug
 buckle

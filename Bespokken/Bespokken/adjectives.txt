@@ -1,9 +1,3 @@
-able
-abundant
-adequate
-active
-addictive
-amazing
 brave
 brilliant
 caring
@@ -14,7 +8,6 @@ defensive
 conflicted
 delightful
 considerate
-cooperative
 crude
 dependable
 devoted
@@ -55,9 +48,6 @@ sweet
 sympathetic
 unique
 watchful
-ethical
 warm
 witty
-worried
-worthy
 special

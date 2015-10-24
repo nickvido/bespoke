@@ -1,7 +1,11 @@
 Hello
-this is John
+Hi
+This is John I'm Speaking
+You're talking to him
 goodbye
-thank you
+thank you, sir
+thank you, ma'am
 good morning
+good afternoon
 good evening
 good night

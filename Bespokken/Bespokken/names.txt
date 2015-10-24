@@ -1,28 +1,28 @@
-Family
-John
-Herbert
-Robertson
+John Herbert Robertson
 Mom
 Dad
-James
 Emily
 Cathy
+my brother in law
 Nick
+my brother
 Daniel
+Danny
 Jenny
 Mark
+sister in law
 Holly
 Jim
-Vidovich
 Nicholas
 Kate
 Alex
 Ali Baba
 Kelly
 Sam
+Sammy
+Samuel
 Barrett
-Tommie
-Ault
+Tommie Ault
 Sean
 Savannah
 Carson
@@ -30,10 +30,12 @@ Maxton
 Max
 Hattie
 Bryson
-Friends
+my friend
+childhood friend
+my friend down south
+girlfriend
 Linda
 Larry
-Buddy
 Ralph
 Tony
 Greg
@@ -45,14 +47,5 @@ Deanne
 Roy
 Bubba
 sister
-brother
 mother
 father
-nephew
-niece
-cousin
-daughter
-son
-in-law
-brother-in-law
-sister-in-law
