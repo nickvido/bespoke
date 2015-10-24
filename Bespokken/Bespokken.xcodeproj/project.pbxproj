@@ -2506,6 +2506,7 @@
 		F0968B991BD4928E00111604 /* weather.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B981BD4928E00111604 /* weather.txt */; settings = {ASSET_TAGS = (); }; };
 		F0968B9B1BD494DC00111604 /* time.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B9A1BD494DC00111604 /* time.txt */; settings = {ASSET_TAGS = (); }; };
 		F0968B9D1BD4969B00111604 /* greetings.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0968B9C1BD4969B00111604 /* greetings.txt */; settings = {ASSET_TAGS = (); }; };
+		F0B6CF5C1BDACB4200419F5E /* SpeakTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B6CF5B1BDACB4200419F5E /* SpeakTask.swift */; settings = {ASSET_TAGS = (); }; };
 		F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */; };
 		F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */; };
 		F0C6D0F61BC9402F00CB4F37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0F41BC9402F00CB4F37 /* Main.storyboard */; };
@@ -5039,6 +5040,7 @@
 		F0968B981BD4928E00111604 /* weather.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = weather.txt; sourceTree = "<group>"; };
 		F0968B9A1BD494DC00111604 /* time.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = time.txt; sourceTree = "<group>"; };
 		F0968B9C1BD4969B00111604 /* greetings.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greetings.txt; sourceTree = "<group>"; };
+		F0B6CF5B1BDACB4200419F5E /* SpeakTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakTask.swift; sourceTree = "<group>"; };
 		F0C6D0ED1BC9402F00CB4F37 /* Bespokken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bespokken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6D0F01BC9402F00CB4F37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C6D0F21BC9402F00CB4F37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -7637,6 +7639,7 @@
 				F037E50C1BD43A9E00B0F938 /* Word.swift */,
 				F0F9E10B1BD86A0600144DBC /* AudioFile.swift */,
 				F0F9E10D1BD86AD700144DBC /* AudioPlayer.swift */,
+				F0B6CF5B1BDACB4200419F5E /* SpeakTask.swift */,
 			);
 			path = Bespokken;
 			sourceTree = "<group>";
@@ -10284,6 +10287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F037E50D1BD43A9E00B0F938 /* Word.swift in Sources */,
+				F0B6CF5C1BDACB4200419F5E /* SpeakTask.swift in Sources */,
 				F037E50B1BD43A9300B0F938 /* WordCell.swift in Sources */,
 				F0F9E10E1BD86AD700144DBC /* AudioPlayer.swift in Sources */,
 				F0C6D0F31BC9402F00CB4F37 /* ViewController.swift in Sources */,

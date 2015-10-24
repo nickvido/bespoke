@@ -10,8 +10,7 @@ import UIKit
 import AVFoundation
 import Darwin
 
-public class HomeViewController: UIViewController, UICollectionViewDelegate {
-    let audioPlayer = AudioPlayer()
+public class HomeViewController: UIViewController, UICollectionViewDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
@@ -21,9 +20,14 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     var modes = [Mode]()
     var words = [Word]()
     var fastwords = [Word]()
+    var list = [AudioFile]()
     
     var currentMode = ""
+    var utt: String = ""
     
+    var speakTasks = [SpeakTask]()
+    // have these here so the app only has one AudioPlayer and SpeechSynthesizer
+    let audioPlayer = AudioPlayer()
     let synth = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
@@ -46,6 +50,10 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func onBtnBackspaceTapped(sender: AnyObject) {
+
+        if txtMain.text.characters.count > 0 {
+            txtMain.text = txtMain.text.substringToIndex(txtMain.text.endIndex.predecessor())
+        }
         //let li: Int? = lastIndexOf(txtMain.text, needle: " ")
         //if li != nil {
         //    txtMain.text = txtMain.text.substringToIndex(txtMain.text.startIndex.advancedBy(li!))
@@ -60,6 +68,10 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     
     func doPlay() {
+        speakTasks.removeAll()
+        // clear previous playlist
+        list.removeAll()
+        
         var text: String = txtMain.text
         
         // Strip any leading and trailing whitespace and punctuation
@@ -72,8 +84,6 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         text = text.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
         let wordArray: [String] = text.componentsSeparatedByString(" ")
-        
-        var list = [AudioFile]()
         
         // Parse the sentence to see if there are recordings of words
         var testFilename: String = ""
@@ -147,27 +157,90 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
                 let url: NSURL? = NSURL.fileURLWithPath(path!)
                 print("path = \(path)")
                 if url != nil {
-                    list.append(AudioFile(word, url!))
+                    let af: AudioFile = AudioFile(word, url!)
+                    speakTasks.append(AudioPlayerTask(audioFile: af))
+                    //list.append(AudioFile(word, url!))
                 }
             } else {
                 print("Could not locate file: \(word).wav")
+                speakTasks.append(TextToSpeechTask(utterance: word))
             }
             
             // consume the word string
             i = i+1
         }
         
+        
+        executeSpeakTasks()
+        
+        txtMain.text = ""
+
+    }
+    
+    func executeSpeakTasks() {
+        // execute the first task in the list
+        // callbacks will execute the following tasks when the previous task completes
+        if speakTasks.count < 1 {
+            return
+        }
+        
+        let st: SpeakTask = speakTasks[0]
+        speakTasks.removeAtIndex(0)
+        if st.type == "AUDIO_PLAYER_TASK" {
+            playAudioPlayerTask(st as! AudioPlayerTask)
+        } else if st.type == "TTS_TASK" {
+            if speakTasks.count > 0 {
+                if speakTasks[0].type == "TTS_TASK" {
+                    // the next task is a TTS task, don't play it, the string will get appended
+                    // and play more smoothly as a sentence
+                    playTextToSpeechTask(st as! TextToSpeechTask, doPlay: false)
+                } else {
+                    // the next task is a recorded task, need to play now
+                    playTextToSpeechTask(st as! TextToSpeechTask, doPlay: true)
+                }
+            } else {
+                // there are no more tasks after this, play it
+                playTextToSpeechTask(st as! TextToSpeechTask, doPlay: true)
+            }
+        } else {
+                    // this should never have happened
+        }
+    }
+
+    func playAudioPlayerTask(ap: AudioPlayerTask) {
+        
+        //list.append(AudioFile(word, url!))
+        list.append(ap.audioFile)
+        
         if list.count > 0 {
             audioPlayer.playSong(0, songsList: list)
         }
-        
-        // TODO: Divide the sentence into recorded words and text-to-speech words
-        // TODO: interleave the recordings with the text-to-speech        
-        
-        //self.utterance = AVSpeechUtterance(string: text)
-        //self.utterance.rate = 0.4
-        //self.synth.speakUtterance(self.utterance)
-        txtMain.text = ""
+    }
+    
+    func playTextToSpeechTask(ttst: TextToSpeechTask, doPlay: Bool) {
+        self.utt = self.utt + ttst.utterance + " "
+        self.utterance = AVSpeechUtterance(string: self.utt)
+        self.utterance.rate = 0.4
+        if doPlay {
+            self.synth.speakUtterance(self.utterance)
+            self.utt = ""
+        } else {
+            // since it does not play, trigger execute instead of using
+            // the callback method
+            executeSpeakTasks()
+        }
+        // when this completes, the callback will be triggered
+    }
+    
+    public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        // callback from completed task - execute the next task
+        list.removeAll()
+        executeSpeakTasks()
+    }
+    
+    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+        // callback from completed task - execute the next task
+        executeSpeakTasks()
     }
     
     public override func viewDidLoad() {
@@ -236,6 +309,12 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         })
         self.fastwordsCollectionView.dataSource = self.fastwordsDataSource
 
+        self.audioPlayer.delegate = self
+        
+        //self.utterance = AVSpeechUtterance(string: text)
+        //self.utterance.rate = 0.4
+        //self.synth.speakUtterance(self.utterance)
+        self.synth.delegate = self
     }
     
     public override func didReceiveMemoryWarning() {
@@ -312,11 +391,11 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate {
         } else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
             print("word: \(word.name)")
-            txtMain.text = txtMain.text.stringByAppendingString(word.name)
+            txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
         } else if collectionView == self.fastwordsCollectionView {
             let word = fastwords[indexPath.item]
             print ("fastword: \(word.name)")
-            txtMain.text = txtMain.text.stringByAppendingString(word.name)
+            txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
         }
     }
     

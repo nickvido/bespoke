@@ -34,10 +34,10 @@ protocol AudioPlayerProtocol: AVAudioPlayerDelegate
 
 public class AudioPlayer: NSObject
 {
+    public var delegate: AVAudioPlayerDelegate?
     public typealias function = () -> ()
     
     var audioPlayer: AVAudioPlayer?
-    var timer: NSTimer!
     
     // Playlist
     private var currentSong: AudioFile?
@@ -51,7 +51,6 @@ public class AudioPlayer: NSObject
     {
         // Inherited
         super.init()
-        
     }
     
     public func startSession()
@@ -97,6 +96,8 @@ public class AudioPlayer: NSObject
         catch let error as NSError {
             print("A AVAudioPlayer contentsOfURL error occurred, here are the details:\n \(error)")
         }
+        
+        // hooks the audioPlayerDidFinishPlaying method from the protocol
         self.audioPlayer!.delegate = self
         self.audioPlayer!.prepareToPlay()
         
@@ -148,13 +149,6 @@ public class AudioPlayer: NSObject
         playSong()
     }
     
-    public func pauseSong()
-    {
-        if self.audioPlayer!.playing {
-            self.audioPlayer!.pause()
-        }
-    }
-    
     public func stopSong()
     {
         if self.audioPlayer == nil || !self.audioPlayer!.playing {
@@ -183,29 +177,14 @@ public class AudioPlayer: NSObject
                     if stopIfInvalid {
                         stopSong()
                     }
+                    self.delegate?.audioPlayerDidFinishPlaying?(self.audioPlayer!, successfully: true)
                     return
                 }
                 
                 playSong(index)
             }
-        }
-    }
-    
-    public func playPreviousSong()
-    {
-        if let _ = self.songsList {
-            if let song = self.currentSong {
-                var index = song.index
-                
-                // Previous song
-                index--
-                
-                if index < 0 {
-                    return
-                }
-                
-                playSong(index)
-            }
+        } else {
+            self.delegate?.audioPlayerDidFinishPlaying?(self.audioPlayer!, successfully: true)
         }
     }
 }
@@ -216,6 +195,10 @@ extension AudioPlayer: AudioPlayerProtocol
     public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool)
     {
         if !flag {
+            // this generally means the playlist has ended - 
+            // TODO: trigger the method call
+            // out to the protol listeners (so SpeakTask listener can play the next task)
+            
             return
         }
         playNextSong(stopIfInvalid: true)
