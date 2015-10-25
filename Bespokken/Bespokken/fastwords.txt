@@ -1,22 +1,23 @@
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-a
 I
+you
+we
+they
+them
+us
+to
+and
+with
+both
+a
+my
+your
+their
+our
 am
 you
 are
 were
 is
 why
-thank you, sir
-thank you, maam
 please
+thank you
