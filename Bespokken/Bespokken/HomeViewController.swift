@@ -12,6 +12,8 @@ import Darwin
 
 public class HomeViewController: UIViewController, UICollectionViewDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     
+    var useRecordingsIfPossible: Bool = false
+    
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
     var fastwordsDataSource: CollectionViewDataSource?
@@ -74,107 +76,110 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         
         var text: String = txtMain.text
         
-        // Strip any leading and trailing whitespace and punctuation
-        text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        text = text.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        text = text.stringByReplacingOccurrencesOfString("?", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        text = text.stringByReplacingOccurrencesOfString("!", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        text = text.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        text = text.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        text = text.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
-        let wordArray: [String] = text.componentsSeparatedByString(" ")
-        
-        // Parse the sentence to see if there are recordings of words
-        var testFilename: String = ""
-        var goodFilename: String = ""
-        var i: Int = 0
-        let depth: Int = 5   // words strings up to x long
-        while i < wordArray.count {
-            let word: String = wordArray[i].lowercaseString
-            goodFilename = word
-            testFilename = goodFilename
-            if goodFilename == "" {
-                // catch empty strings
-                i = i+1
-                continue
-            }
+        if useRecordingsIfPossible {
             
-            // try to build the longest word string possible
-            // search depth first down to one extra word
-            for d in (0...depth).reverse() {
+            // Strip any leading and trailing whitespace and punctuation
+            text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            text = text.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.stringByReplacingOccurrencesOfString("?", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.stringByReplacingOccurrencesOfString("!", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            
+            let wordArray: [String] = text.componentsSeparatedByString(" ")
+            
+            // Parse the sentence to see if there are recordings of words
+            var testFilename: String = ""
+            var goodFilename: String = ""
+            var i: Int = 0
+            let depth: Int = 5   // words strings up to x long
+            while i < wordArray.count {
+                let word: String = wordArray[i].lowercaseString
+                goodFilename = word
                 testFilename = goodFilename
-                if (i+d) < wordArray.count {
-                    if d > 0 {
-                        for j in 1...d {
-                            // build the word string to this depth
-                            let nextword: String = wordArray[i+j].lowercaseString
-                            testFilename = testFilename + "_" + nextword
+                if goodFilename == "" {
+                    // catch empty strings
+                    i = i+1
+                    continue
+                }
+                
+                // try to build the longest word string possible
+                // search depth first down to one extra word
+                for d in (0...depth).reverse() {
+                    testFilename = goodFilename
+                    if (i+d) < wordArray.count {
+                        if d > 0 {
+                            for j in 1...d {
+                                // build the word string to this depth
+                                let nextword: String = wordArray[i+j].lowercaseString
+                                testFilename = testFilename + "_" + nextword
+                            }
                         }
-                    }
-                    var goodFilenames: [String] = [String]()
-                    
-                    // find all the potential matching file names for this combination
-                    // add them to a list which will be selected from at random
-                    if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") != nil {
-                        goodFilenames.append(testFilename)
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_001", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_001")
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_002", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_002")
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_003", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_003")
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_004", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_004")
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_005", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_005")
-                    }
-                    if NSBundle.mainBundle().pathForResource(testFilename + "_006", ofType: "wav") != nil {
-                        goodFilenames.append(testFilename + "_006")
-                    }
-                    
-                    if goodFilenames.count == 0 {
-                        continue      // no filenames found
+                        var goodFilenames: [String] = [String]()
+                        
+                        // find all the potential matching file names for this combination
+                        // add them to a list which will be selected from at random
+                        if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") != nil {
+                            goodFilenames.append(testFilename)
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_001", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_001")
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_002", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_002")
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_003", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_003")
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_004", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_004")
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_005", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_005")
+                        }
+                        if NSBundle.mainBundle().pathForResource(testFilename + "_006", ofType: "wav") != nil {
+                            goodFilenames.append(testFilename + "_006")
+                        }
+                        
+                        if goodFilenames.count == 0 {
+                            continue      // no filenames found
+                        } else {
+                            let diceRoll = Int(arc4random_uniform(UInt32(goodFilenames.count)))
+                            // found a consecutive word string that exists
+                            goodFilename = goodFilenames[diceRoll]
+                            i = i+d       // consume the words
+                            break         // quit the depth search
+                        }
                     } else {
-                        let diceRoll = Int(arc4random_uniform(UInt32(goodFilenames.count)))
-                        // found a consecutive word string that exists
-                        goodFilename = goodFilenames[diceRoll]
-                        i = i+d       // consume the words
-                        break         // quit the depth search
+                        continue          // the proposed depth was too long for the text
+                    }
+                }
+                
+                let path: String? = NSBundle.mainBundle().pathForResource(goodFilename, ofType: "wav")
+                if path != nil {
+                    let url: NSURL? = NSURL.fileURLWithPath(path!)
+                    print("path = \(path)")
+                    if url != nil {
+                        let af: AudioFile = AudioFile(word, url!)
+                        speakTasks.append(AudioPlayerTask(audioFile: af))
+                        //list.append(AudioFile(word, url!))
                     }
                 } else {
-                    continue          // the proposed depth was too long for the text
+                    print("Could not locate file: \(word).wav")
+                    speakTasks.append(TextToSpeechTask(utterance: word))
                 }
+                
+                // consume the word string
+                i = i+1
             }
-            
-            let path: String? = NSBundle.mainBundle().pathForResource(goodFilename, ofType: "wav")
-            if path != nil {
-                let url: NSURL? = NSURL.fileURLWithPath(path!)
-                print("path = \(path)")
-                if url != nil {
-                    let af: AudioFile = AudioFile(word, url!)
-                    speakTasks.append(AudioPlayerTask(audioFile: af))
-                    //list.append(AudioFile(word, url!))
-                }
-            } else {
-                print("Could not locate file: \(word).wav")
-                speakTasks.append(TextToSpeechTask(utterance: word))
-            }
-            
-            // consume the word string
-            i = i+1
+        } else {
+            speakTasks.append(TextToSpeechTask(utterance: text))
         }
-        
         
         executeSpeakTasks()
         
         txtMain.text = ""
-
     }
     
     func executeSpeakTasks() {
