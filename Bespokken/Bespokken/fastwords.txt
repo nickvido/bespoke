@@ -1,7 +1,10 @@
 I
+am
 you
+are
 we
 they
+were
 them
 us
 to
@@ -13,10 +16,6 @@ my
 your
 their
 our
-am
-you
-are
-were
 is
 why
 please
