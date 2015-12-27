@@ -2997,6 +2997,7 @@
 		F0C6D0FE1BC9403000CB4F37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6D0FC1BC9403000CB4F37 /* LaunchScreen.storyboard */; };
 		F0C6D1091BC9403000CB4F37 /* BespokkenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D1081BC9403000CB4F37 /* BespokkenTests.swift */; };
 		F0C6D1141BC9403000CB4F37 /* BespokkenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6D1131BC9403000CB4F37 /* BespokkenUITests.swift */; };
+		F0CA16E71C309C2B00EE5CF5 /* emergency.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0CA16E61C309C2B00EE5CF5 /* emergency.txt */; settings = {ASSET_TAGS = (); }; };
 		F0F9E10C1BD86A0600144DBC /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9E10B1BD86A0600144DBC /* AudioFile.swift */; settings = {ASSET_TAGS = (); }; };
 		F0F9E10E1BD86AD700144DBC /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9E10D1BD86AD700144DBC /* AudioPlayer.swift */; settings = {ASSET_TAGS = (); }; };
 		F0FBFA741BD1D28A003064FA /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBFA731BD1D28A003064FA /* EmptySegue.swift */; settings = {ASSET_TAGS = (); }; };
@@ -6019,6 +6020,7 @@
 		F0C6D10F1BC9403000CB4F37 /* BespokkenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BespokkenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6D1131BC9403000CB4F37 /* BespokkenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BespokkenUITests.swift; sourceTree = "<group>"; };
 		F0C6D1151BC9403000CB4F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0CA16E61C309C2B00EE5CF5 /* emergency.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = emergency.txt; sourceTree = "<group>"; };
 		F0F9E10B1BD86A0600144DBC /* AudioFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
 		F0F9E10D1BD86AD700144DBC /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		F0FBFA731BD1D28A003064FA /* EmptySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
@@ -9037,6 +9039,7 @@
 				F0968B921BD48DDA00111604 /* trees.txt */,
 				F0968B7A1BD481AF00111604 /* verbs.txt */,
 				F0968B981BD4928E00111604 /* weather.txt */,
+				F0CA16E61C309C2B00EE5CF5 /* emergency.txt */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -11252,6 +11255,7 @@
 				F03A685A1BDB5C6100E24E1A /* observing.wav in Resources */,
 				F03A6B671BDB5C6100E24E1A /* tonys.wav in Resources */,
 				F0968B851BD4872900111604 /* birds.txt in Resources */,
+				F0CA16E71C309C2B00EE5CF5 /* emergency.txt in Resources */,
 				F03A6B311BDB5C6100E24E1A /* think_about_it.wav in Resources */,
 				F03A68F21BDB5C6100E24E1A /* porkchop.wav in Resources */,
 				F03A69191BDB5C6100E24E1A /* push.wav in Resources */,

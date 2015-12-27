@@ -338,6 +338,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
     
     func loadModes() {
+        modes.append(Mode(name: "Emergency"))
         modes.append(Mode(name: "Greetings"))
         modes.append(Mode(name: "Food"))
         modes.append(Mode(name: "Telephone"))
