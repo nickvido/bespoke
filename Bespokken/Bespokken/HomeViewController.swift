@@ -44,11 +44,11 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     
     @IBAction func onLeftPlayButtonTapped(sender: AnyObject) {
-        doPlay()
+        doPlay(txtMain.text)
     }
     
     @IBAction func onPlayButtonTapped(sender: AnyObject) {
-        doPlay()
+        doPlay(txtMain.text)
     }
     
     @IBAction func onBtnBackspaceTapped(sender: AnyObject) {
@@ -69,12 +69,10 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
     
     
-    func doPlay() {
+    func doPlay(var text: String) {
         speakTasks.removeAll()
         // clear previous playlist
         list.removeAll()
-        
-        var text: String = txtMain.text
         
         if useRecordingsIfPossible {
             
@@ -410,8 +408,13 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             loadWords(soundboard.name)
         } else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
-            print("word: \(word.name)")
-            txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
+            //print("word: \(word.name)")
+            // OLD - add to list
+            //txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
+            
+            // TODO:  play immediate
+            doPlay(word.name)
+            
         } else if collectionView == self.fastwordsCollectionView {
             let word = fastwords[indexPath.item]
             print ("fastword: \(word.name)")
