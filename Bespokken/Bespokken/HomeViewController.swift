@@ -355,27 +355,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
     
     func loadModes() {
-        soundboards.append(Soundboard(name: "Emergency"))
-        soundboards.append(Soundboard(name: "Greetings"))
-        soundboards.append(Soundboard(name: "Food"))
-        soundboards.append(Soundboard(name: "Football"))
-        soundboards.append(Soundboard(name: "Telephone"))
-        soundboards.append(Soundboard(name: "Names"))
-        soundboards.append(Soundboard(name: "Adjectives"))
-        soundboards.append(Soundboard(name: "Verbs"))
-        soundboards.append(Soundboard(name: "Emotions"))
-        soundboards.append(Soundboard(name: "Anatomy"))
-        soundboards.append(Soundboard(name: "Time"))
-        soundboards.append(Soundboard(name: "Animals"))
-        soundboards.append(Soundboard(name: "Birds"))
-        soundboards.append(Soundboard(name: "Cars"))
-        soundboards.append(Soundboard(name: "Colors"))
-        soundboards.append(Soundboard(name: "Fish"))
-        soundboards.append(Soundboard(name: "Music"))
-        soundboards.append(Soundboard(name: "People"))
-        soundboards.append(Soundboard(name: "Places"))
-        soundboards.append(Soundboard(name: "Trees"))
-        soundboards.append(Soundboard(name: "Weather"))
+        // load the soundboards.txt file
+        // for each line in the file, add the soundboard
+        let soundboardsPath = NSBundle.mainBundle().pathForResource("soundboards", ofType: "txt")
+        if let contents = try? String(contentsOfFile: soundboardsPath!, usedEncoding: nil) {
+            let lines = contents.componentsSeparatedByString("\n")
+            for (_, line) in lines.enumerate() {
+                soundboards.append(Soundboard(name: line))
+            }
+        }
         
         self.modesCollectionView.reloadData()
     }
