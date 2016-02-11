@@ -19,7 +19,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     var fastwordsDataSource: CollectionViewDataSource?
     
     var buttons = [UIButton]()
-    var modes = [Mode]()
+    var soundboards = [Soundboard]()
     var words = [Word]()
     var fastwords = [Word]()
     var list = [AudioFile]()
@@ -294,9 +294,9 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         
         // Setup modes
         loadModes()
-        self.modesDataSource = CollectionViewDataSource(items: self.modes, reuseIdentifier: "Mode", configureBlock: { (cell, item) -> () in
-            if let actualCell = cell as? ModeCell {
-                if let actualItem = item as? Mode {
+        self.modesDataSource = CollectionViewDataSource(items: self.soundboards, reuseIdentifier: "Soundboard", configureBlock: { (cell, item) -> () in
+            if let actualCell = cell as? SoundboardCell {
+                if let actualItem = item as? Soundboard {
                     actualCell.configureForItem(actualItem)
                 }
             }
@@ -343,12 +343,6 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         useRecordingsIfPossible = userDefaults.boolForKey("use_recordings_if_possible")
-        if (useRecordingsIfPossible) {
-            print("use recording changed to true")
-        }
-        else {
-            print("use recording changed to false")
-        }
     }
     
     public override func didReceiveMemoryWarning() {
@@ -361,27 +355,27 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
     
     func loadModes() {
-        modes.append(Mode(name: "Emergency"))
-        modes.append(Mode(name: "Greetings"))
-        modes.append(Mode(name: "Food"))
-        modes.append(Mode(name: "Football"))
-        modes.append(Mode(name: "Telephone"))
-        modes.append(Mode(name: "Names"))
-        modes.append(Mode(name: "Adjectives"))
-        modes.append(Mode(name: "Verbs"))
-        modes.append(Mode(name: "Emotions"))        
-        modes.append(Mode(name: "Anatomy"))
-        modes.append(Mode(name: "Time"))
-        modes.append(Mode(name: "Animals"))
-        modes.append(Mode(name: "Birds"))
-        modes.append(Mode(name: "Cars"))
-        modes.append(Mode(name: "Colors"))
-        modes.append(Mode(name: "Fish"))
-        modes.append(Mode(name: "Music"))
-        modes.append(Mode(name: "People"))
-        modes.append(Mode(name: "Places"))
-        modes.append(Mode(name: "Trees"))
-        modes.append(Mode(name: "Weather"))
+        soundboards.append(Soundboard(name: "Emergency"))
+        soundboards.append(Soundboard(name: "Greetings"))
+        soundboards.append(Soundboard(name: "Food"))
+        soundboards.append(Soundboard(name: "Football"))
+        soundboards.append(Soundboard(name: "Telephone"))
+        soundboards.append(Soundboard(name: "Names"))
+        soundboards.append(Soundboard(name: "Adjectives"))
+        soundboards.append(Soundboard(name: "Verbs"))
+        soundboards.append(Soundboard(name: "Emotions"))
+        soundboards.append(Soundboard(name: "Anatomy"))
+        soundboards.append(Soundboard(name: "Time"))
+        soundboards.append(Soundboard(name: "Animals"))
+        soundboards.append(Soundboard(name: "Birds"))
+        soundboards.append(Soundboard(name: "Cars"))
+        soundboards.append(Soundboard(name: "Colors"))
+        soundboards.append(Soundboard(name: "Fish"))
+        soundboards.append(Soundboard(name: "Music"))
+        soundboards.append(Soundboard(name: "People"))
+        soundboards.append(Soundboard(name: "Places"))
+        soundboards.append(Soundboard(name: "Trees"))
+        soundboards.append(Soundboard(name: "Weather"))
         
         self.modesCollectionView.reloadData()
     }
@@ -423,10 +417,9 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if collectionView == self.modesCollectionView {
-            let mode = modes[indexPath.item]
-            print("mode: \(mode.name)")
+            let soundboard = soundboards[indexPath.item]
             // Handle switch modes
-            loadWords(mode.name)
+            loadWords(soundboard.name)
         } else if collectionView == self.wordsCollectionView {
             let word = words[indexPath.item]
             print("word: \(word.name)")

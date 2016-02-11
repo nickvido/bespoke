@@ -1,5 +1,5 @@
 //
-//  ModeCellCollectionViewCell.swift
+//  SoundboardCellCollectionViewCell.swift
 //  Bespokken
 //
 //  Created by nickvido on 10/17/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ModeCell: UICollectionViewCell {
+class SoundboardCell: UICollectionViewCell {
     @IBOutlet weak var lblName: UILabel!
     
-    func configureForItem(item: Mode) {
+    func configureForItem(item: Soundboard) {
         lblName.text = item.name
         
         self.backgroundColor = UIColor.whiteColor()

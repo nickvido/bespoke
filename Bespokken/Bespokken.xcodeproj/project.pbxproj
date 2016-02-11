@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F0233FD31BD1C64A00257A82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0233FD21BD1C64A00257A82 /* HomeViewController.swift */; };
-		F037E5031BD2C16500B0F938 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5021BD2C16500B0F938 /* Mode.swift */; };
-		F037E5051BD2C2BD00B0F938 /* ModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5041BD2C2BD00B0F938 /* ModeCell.swift */; };
+		F037E5031BD2C16500B0F938 /* Soundboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5021BD2C16500B0F938 /* Soundboard.swift */; };
+		F037E5051BD2C2BD00B0F938 /* SoundboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5041BD2C2BD00B0F938 /* SoundboardCell.swift */; };
 		F037E5091BD4347500B0F938 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */; };
 		F037E50B1BD43A9300B0F938 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50A1BD43A9300B0F938 /* WordCell.swift */; };
 		F037E50D1BD43A9E00B0F938 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037E50C1BD43A9E00B0F938 /* Word.swift */; };
@@ -3027,8 +3027,8 @@
 
 /* Begin PBXFileReference section */
 		F0233FD21BD1C64A00257A82 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F037E5021BD2C16500B0F938 /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
-		F037E5041BD2C2BD00B0F938 /* ModeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCell.swift; sourceTree = "<group>"; };
+		F037E5021BD2C16500B0F938 /* Soundboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soundboard.swift; sourceTree = "<group>"; };
+		F037E5041BD2C2BD00B0F938 /* SoundboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundboardCell.swift; sourceTree = "<group>"; };
 		F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F037E50A1BD43A9300B0F938 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F037E50C1BD43A9E00B0F938 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
@@ -9087,8 +9087,8 @@
 				F0FBFA751BD1D496003064FA /* ContainerViewController.swift */,
 				F0FBFA771BD27CC2003064FA /* ShortCodesViewController.swift */,
 				F0FBFA791BD27CDB003064FA /* HistoryViewController.swift */,
-				F037E5021BD2C16500B0F938 /* Mode.swift */,
-				F037E5041BD2C2BD00B0F938 /* ModeCell.swift */,
+				F037E5021BD2C16500B0F938 /* Soundboard.swift */,
+				F037E5041BD2C2BD00B0F938 /* SoundboardCell.swift */,
 				F037E5081BD4347500B0F938 /* CollectionViewDataSource.swift */,
 				F037E50A1BD43A9300B0F938 /* WordCell.swift */,
 				F037E50C1BD43A9E00B0F938 /* Word.swift */,
@@ -12236,12 +12236,12 @@
 				F0FBFA781BD27CC2003064FA /* ShortCodesViewController.swift in Sources */,
 				F0C6D0F91BC9403000CB4F37 /* Bespokken.xcdatamodeld in Sources */,
 				F0C6D0F11BC9402F00CB4F37 /* AppDelegate.swift in Sources */,
-				F037E5051BD2C2BD00B0F938 /* ModeCell.swift in Sources */,
+				F037E5051BD2C2BD00B0F938 /* SoundboardCell.swift in Sources */,
 				F0FBFA741BD1D28A003064FA /* EmptySegue.swift in Sources */,
 				F0FBFA761BD1D496003064FA /* ContainerViewController.swift in Sources */,
 				F0233FD31BD1C64A00257A82 /* HomeViewController.swift in Sources */,
 				F0FBFA7A1BD27CDB003064FA /* HistoryViewController.swift in Sources */,
-				F037E5031BD2C16500B0F938 /* Mode.swift in Sources */,
+				F037E5031BD2C16500B0F938 /* Soundboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Mode: NSObject {
+class Soundboard: NSObject {
     var name: String
     
     init(name: String) {
