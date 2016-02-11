@@ -1,0 +1,26 @@
+NFL
+football
+carolina
+panthers
+denver
+broncos
+afc east
+afc south
+afc west
+afc north
+pittsburgh
+steelers
+cleveland browns
+season
+fumbles
+interception
+touchdown
+pass interference
+oakland
+raiders
+running back
+quarterback
+cam newton
+peyton manning
+pass
+tackle

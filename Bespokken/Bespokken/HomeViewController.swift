@@ -12,7 +12,7 @@ import Darwin
 
 public class HomeViewController: UIViewController, UICollectionViewDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     
-    var useRecordingsIfPossible: Bool = false
+    var useRecordingsIfPossible: Bool = true
     
     var modesDataSource: CollectionViewDataSource?
     var wordsDataSource: CollectionViewDataSource?
@@ -330,6 +330,25 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         //self.utterance.rate = 0.4
         //self.synth.speakUtterance(self.utterance)
         self.synth.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "defaultsChanged", name: NSUserDefaultsDidChangeNotification, object: nil)
+        configureSettings()
+    }
+    
+    func defaultsChanged()
+    {
+        configureSettings()
+    }
+    
+    private func configureSettings()
+    {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        useRecordingsIfPossible = userDefaults.boolForKey("use_recordings_if_possible")
+        if (useRecordingsIfPossible) {
+            print("use recording changed to true")
+        }
+        else {
+            print("use recording changed to false")
+        }
     }
     
     public override func didReceiveMemoryWarning() {
@@ -337,10 +356,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     func loadModes() {
         modes.append(Mode(name: "Emergency"))
         modes.append(Mode(name: "Greetings"))
         modes.append(Mode(name: "Food"))
+        modes.append(Mode(name: "Football"))
         modes.append(Mode(name: "Telephone"))
         modes.append(Mode(name: "Names"))
         modes.append(Mode(name: "Adjectives"))
