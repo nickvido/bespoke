@@ -1,21 +1,15 @@
 Cadillac
 Chevy
-Impala
-Caprice
+Austin Healey
+Buick
 Chevrolet
+crustmobile
 Ford
+muscle car
+Oldsmobile
 Jeep
-engine
+Pontiac
+electric car
 brakes
-fuel
-transmission
 GMC
-Ferrari
-Porsche
-Lamborghini
-Mustang
-coupe
-drop-top
 fast
-drag strip
-NASCAR

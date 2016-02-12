@@ -1,6 +1,5 @@
 remember
 have
-run
 see
 read
 play

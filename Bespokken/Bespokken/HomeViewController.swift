@@ -42,14 +42,20 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     @IBOutlet weak var fastwordsCollectionView: UICollectionView!
     @IBOutlet weak var txtMain: UITextView!
     
+    @IBOutlet weak var btnHistory: UIButton!
     
     @IBAction func onLeftPlayButtonTapped(sender: AnyObject) {
-        doPlay(txtMain.text)
+        doPlay(txtMain.text, forceUseRecordingsIfPossible: false)
     }
     
     @IBAction func onPlayButtonTapped(sender: AnyObject) {
-        doPlay(txtMain.text)
+        doPlay(txtMain.text, forceUseRecordingsIfPossible: false)
     }
+    
+    @IBAction func onBtnHistoryTapped(sender: AnyObject) {
+        print("History tapped")      
+    }
+    
     
     @IBAction func onBtnBackspaceTapped(sender: AnyObject) {
 
@@ -69,12 +75,12 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
     
     
-    func doPlay(var text: String) {
+    func doPlay(var text: String, forceUseRecordingsIfPossible: Bool) {
         speakTasks.removeAll()
         // clear previous playlist
         list.removeAll()
         
-        if useRecordingsIfPossible {
+        if (useRecordingsIfPossible || forceUseRecordingsIfPossible) {
             
             // Strip any leading and trailing whitespace and punctuation
             text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -91,7 +97,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             var testFilename: String = ""
             var goodFilename: String = ""
             var i: Int = 0
-            let depth: Int = 5   // words strings up to x long
+            let depth: Int = 8   // words strings up to x long
             while i < wordArray.count {
                 let word: String = wordArray[i].lowercaseString
                 goodFilename = word
@@ -260,7 +266,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         }
         
         // Do any additional setup after loading the view.
-        buttons += [btnPlayLeft, btnPlay, btnBackspace, btnClear]
+        buttons += [btnPlayLeft, btnPlay, btnBackspace, btnClear, btnHistory]
         
         for button in buttons {
             button.backgroundColor = UIColor.whiteColor()
@@ -412,8 +418,9 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             // OLD - add to list
             //txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
             
-            // TODO:  play immediate
-            doPlay(word.name)
+            // play immediate, always use recordings if possible from soundboard
+            // regardless of settings
+            doPlay(word.name, forceUseRecordingsIfPossible: true)
             
         } else if collectionView == self.fastwordsCollectionView {
             let word = fastwords[indexPath.item]

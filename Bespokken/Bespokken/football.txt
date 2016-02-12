@@ -1,26 +1,43 @@
 NFL
 football
-carolina
-panthers
-denver
-broncos
-afc east
-afc south
-afc west
-afc north
-pittsburgh
-steelers
-cleveland browns
-season
-fumbles
-interception
-touchdown
-pass interference
-oakland
-raiders
-running back
-quarterback
-cam newton
-peyton manning
-pass
-tackle
+AFC East
+Bills
+Dolphins
+Patriots
+Jets
+AFC North
+Ravens
+Bengals
+Browns
+Steelers
+AFC South
+Texans
+Colts
+Jaguars
+Titans
+AFC West
+Broncos
+Chiefs
+Raiders
+Chargers
+NFC East
+Cowboys
+Giants
+Eagles
+Redskins
+NFC North
+Bears
+Lions
+Packers
+Vikings
+NFC South
+Falcons
+Panthers
+Saints
+Buccaneers
+NFC West
+Cardinals
+Rams
+49ers
+Seahawks
+Cleveland Browns
