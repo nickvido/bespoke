@@ -8,47 +8,47 @@
 
 import UIKit
 
-public class ContainerViewController: UIViewController {
+open class ContainerViewController: UIViewController {
 
     var currentViewController: UIViewController!
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
-        performSegueWithIdentifier("showHome", sender: nil)
+        performSegue(withIdentifier: "showHome", sender: nil)
     }
 
-    public override func didReceiveMemoryWarning() {
+    open override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    public func showView(segueIdentifier: String) {
-        performSegueWithIdentifier(segueIdentifier, sender: nil)
+    open func showView(_ segueIdentifier: String) {
+        performSegue(withIdentifier: segueIdentifier, sender: nil)
     }
     
-    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if !self.childViewControllers.contains(segue.destinationViewController) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if !self.childViewControllers.contains(segue.destination) {
             // lazy load the child view controller when the first segue to it will take place
-            self.addChildViewController(segue.destinationViewController)
-            currentViewController = segue.destinationViewController
-            segue.destinationViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-            self.view.addSubview(segue.destinationViewController.view)
-            segue.destinationViewController.didMoveToParentViewController(self)
+            self.addChildViewController(segue.destination)
+            currentViewController = segue.destination
+            segue.destination.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            self.view.addSubview(segue.destination.view)
+            segue.destination.didMove(toParentViewController: self)
         }
         
-        if currentViewController == segue.destinationViewController {
+        if currentViewController == segue.destination {
             // do nothing
         } else {
-            doSegue(currentViewController, toVC: segue.destinationViewController)
+            doSegue(currentViewController, toVC: segue.destination)
         }
     }
     
-    func doSegue(fromVC: UIViewController, toVC: UIViewController) {
-        toVC.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-        fromVC.willMoveToParentViewController(nil)
+    func doSegue(_ fromVC: UIViewController, toVC: UIViewController) {
+        toVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        fromVC.willMove(toParentViewController: nil)
         self.addChildViewController(toVC)
-        self.transitionFromViewController(fromVC, toViewController: toVC, duration: 0.0, options: UIViewAnimationOptions.TransitionNone, animations: nil, completion: nil)
+        self.transition(from: fromVC, to: toVC, duration: 0.0, options: UIViewAnimationOptions(), animations: nil, completion: nil)
     }
     
 

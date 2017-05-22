@@ -28,16 +28,16 @@ import AVFoundation
 import UIKit
 import MediaPlayer
 
-public class AudioFile
+open class AudioFile
 {
-    public let title: String
-    public var fileSize: Int = 0
-    public var length: Float = 0.0
-    public var duration: NSTimeInterval = 0
-    public var path: NSURL?
-    public var index: Int = 0
+    open let title: String
+    open var fileSize: Int = 0
+    open var length: Float = 0.0
+    open var duration: TimeInterval = 0
+    open var path: URL?
+    open var index: Int = 0
     
-    required public init(_ title: String, _ path: NSURL)
+    required public init(_ title: String, _ path: URL)
     {
         self.title = title
         self.path = path

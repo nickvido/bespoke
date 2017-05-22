@@ -23,26 +23,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnSpacebarRight: UIButton!
     
     
-    @IBAction func onHomeTapped(sender: AnyObject) {
+    @IBAction func onHomeTapped(_ sender: AnyObject) {
         self.containerViewController.showView("showHome")
     }
-    @IBAction func onDayNightTapped(sender: AnyObject) {
+    @IBAction func onDayNightTapped(_ sender: AnyObject) {
         
     }
     
-    @IBAction func onHistoryTapped(sender: AnyObject) {
+    @IBAction func onHistoryTapped(_ sender: AnyObject) {
         self.containerViewController.showView("showHistory")
     }
     
-    @IBAction func onShortCodesTapped(sender: AnyObject) {
+    @IBAction func onShortCodesTapped(_ sender: AnyObject) {
         self.containerViewController.showView("showShortCodes")
     }
     
-    @IBAction func onSpacebarTapped(sender: AnyObject) {
+    @IBAction func onSpacebarTapped(_ sender: AnyObject) {
         doSpacebar()
     }
     
-    @IBAction func onSpacebarRightTapped(sender: AnyObject) {
+    @IBAction func onSpacebarRightTapped(_ sender: AnyObject) {
         doSpacebar()
     }
     
@@ -71,8 +71,8 @@ class ViewController: UIViewController {
         toolbarButtons += [btnHome, btnDayNight, btnHistory, btnShortCodes, btnSpacebar, btnSpacebarRight]
         
         for button in toolbarButtons {
-            button.backgroundColor = UIColor.whiteColor()
-            button.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+            button.backgroundColor = UIColor.white
+            button.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
             button.layer.borderWidth = 1
             button.layer.cornerRadius = 5
         }
@@ -83,11 +83,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.containerViewController = segue.destinationViewController as? ContainerViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.containerViewController = segue.destination as? ContainerViewController
     }
 
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return true
     }
 

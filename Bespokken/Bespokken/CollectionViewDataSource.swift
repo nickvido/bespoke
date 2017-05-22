@@ -9,41 +9,41 @@
 import Foundation
 import UIKit
 
-typealias CollectionViewCellConfigureBlock = (cell:UICollectionViewCell, item:AnyObject?) -> ()
+typealias CollectionViewCellConfigureBlock = (_ cell:UICollectionViewCell, _ item:AnyObject?) -> ()
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     var items:NSArray = []
     var reuseIdentifier:String?
     var configureCellBlock:CollectionViewCellConfigureBlock?
     
-    init(items: NSArray, reuseIdentifier: String, configureBlock: CollectionViewCellConfigureBlock) {
+    init(items: NSArray, reuseIdentifier: String, configureBlock: @escaping CollectionViewCellConfigureBlock) {
         self.items = items
         self.reuseIdentifier = reuseIdentifier
         self.configureCellBlock = configureBlock
         super.init()
     }
     
-    func setDataItems(items: NSArray) {
+    func setDataItems(_ items: NSArray) {
         self.items = items
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.reuseIdentifier!, forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier!, for: indexPath) as UICollectionViewCell
         let item: AnyObject = self.itemAtIndexPath(indexPath)
         
         if (self.configureCellBlock != nil) {
-            self.configureCellBlock!(cell: cell, item: item)
+            self.configureCellBlock!(cell, item)
         }
         
         return cell
     }
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject {
-        return self.items[indexPath.row]
+    func itemAtIndexPath(_ indexPath: IndexPath) -> AnyObject {
+        return self.items[(indexPath as NSIndexPath).row] as AnyObject
     }
 }

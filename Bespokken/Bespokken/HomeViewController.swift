@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Darwin
 
-public class HomeViewController: UIViewController, UICollectionViewDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
+open class HomeViewController: UIViewController, UICollectionViewDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     
     var useRecordingsIfPossible: Bool = true
     
@@ -20,8 +20,8 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     var buttons = [UIButton]()
     var soundboards = [Soundboard]()
-    var words = [Word]()
-    var fastwords = [Word]()
+    var words = NSMutableArray() //[Word]()
+    var fastwords = NSMutableArray() // [Word]()
     var list = [AudioFile]()
     
     var currentMode = ""
@@ -44,23 +44,23 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     
     @IBOutlet weak var btnHistory: UIButton!
     
-    @IBAction func onLeftPlayButtonTapped(sender: AnyObject) {
+    @IBAction func onLeftPlayButtonTapped(_ sender: AnyObject) {
         doPlay(txtMain.text, forceUseRecordingsIfPossible: false)
     }
     
-    @IBAction func onPlayButtonTapped(sender: AnyObject) {
+    @IBAction func onPlayButtonTapped(_ sender: AnyObject) {
         doPlay(txtMain.text, forceUseRecordingsIfPossible: false)
     }
     
-    @IBAction func onBtnHistoryTapped(sender: AnyObject) {
+    @IBAction func onBtnHistoryTapped(_ sender: AnyObject) {
         print("History tapped")      
     }
     
     
-    @IBAction func onBtnBackspaceTapped(sender: AnyObject) {
+    @IBAction func onBtnBackspaceTapped(_ sender: AnyObject) {
 
         if txtMain.text.characters.count > 0 {
-            txtMain.text = txtMain.text.substringToIndex(txtMain.text.endIndex.predecessor())
+            txtMain.text = txtMain.text.substring(to: txtMain.text.index(before: txtMain.text.endIndex))
         }
         //let li: Int? = lastIndexOf(txtMain.text, needle: " ")
         //if li != nil {
@@ -70,12 +70,13 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         //}
     }
     
-    @IBAction func onButtonClearTapped(sender: AnyObject) {
+    @IBAction func onButtonClearTapped(_ sender: AnyObject) {
         txtMain.text = ""
     }
     
     
-    func doPlay(var text: String, forceUseRecordingsIfPossible: Bool) {
+    func doPlay(_ text: String, forceUseRecordingsIfPossible: Bool) {
+        var text = text
         speakTasks.removeAll()
         // clear previous playlist
         list.removeAll()
@@ -83,15 +84,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         if (useRecordingsIfPossible || forceUseRecordingsIfPossible) {
             
             // Strip any leading and trailing whitespace and punctuation
-            text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            text = text.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            text = text.stringByReplacingOccurrencesOfString("?", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            text = text.stringByReplacingOccurrencesOfString("!", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            text = text.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            text = text.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            text = text.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            text = text.trimmingCharacters(in: CharacterSet.whitespaces)
+            text = text.replacingOccurrences(of: "'", with: "", options: NSString.CompareOptions.literal, range: nil)
+            text = text.replacingOccurrences(of: "?", with: "", options: NSString.CompareOptions.literal, range: nil)
+            text = text.replacingOccurrences(of: "!", with: "", options: NSString.CompareOptions.literal, range: nil)
+            text = text.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range: nil)
+            text = text.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range: nil)
+            text = text.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range: nil)
             
-            let wordArray: [String] = text.componentsSeparatedByString(" ")
+            let wordArray: [String] = text.components(separatedBy: " ")
             
             // Parse the sentence to see if there are recordings of words
             var testFilename: String = ""
@@ -99,7 +100,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             var i: Int = 0
             let depth: Int = 8   // words strings up to x long
             while i < wordArray.count {
-                let word: String = wordArray[i].lowercaseString
+                let word: String = wordArray[i].lowercased()
                 goodFilename = word
                 testFilename = goodFilename
                 if goodFilename == "" {
@@ -110,13 +111,13 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
                 
                 // try to build the longest word string possible
                 // search depth first down to one extra word
-                for d in (0...depth).reverse() {
+                for d in (0...depth).reversed() {
                     testFilename = goodFilename
                     if (i+d) < wordArray.count {
                         if d > 0 {
                             for j in 1...d {
                                 // build the word string to this depth
-                                let nextword: String = wordArray[i+j].lowercaseString
+                                let nextword: String = wordArray[i+j].lowercased()
                                 testFilename = testFilename + "_" + nextword
                             }
                         }
@@ -124,25 +125,25 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
                         
                         // find all the potential matching file names for this combination
                         // add them to a list which will be selected from at random
-                        if NSBundle.mainBundle().pathForResource(testFilename, ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename, ofType: "wav") != nil {
                             goodFilenames.append(testFilename)
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_001", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_001", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_001")
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_002", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_002", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_002")
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_003", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_003", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_003")
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_004", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_004", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_004")
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_005", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_005", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_005")
                         }
-                        if NSBundle.mainBundle().pathForResource(testFilename + "_006", ofType: "wav") != nil {
+                        if Bundle.main.path(forResource: testFilename + "_006", ofType: "wav") != nil {
                             goodFilenames.append(testFilename + "_006")
                         }
                         
@@ -160,9 +161,9 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
                     }
                 }
                 
-                let path: String? = NSBundle.mainBundle().pathForResource(goodFilename, ofType: "wav")
+                let path: String? = Bundle.main.path(forResource: goodFilename, ofType: "wav")
                 if path != nil {
-                    let url: NSURL? = NSURL.fileURLWithPath(path!)
+                    let url: URL? = URL(fileURLWithPath: path!)
                     print("path = \(path)")
                     if url != nil {
                         let af: AudioFile = AudioFile(word, url!)
@@ -194,7 +195,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         }
         
         let st: SpeakTask = speakTasks[0]
-        speakTasks.removeAtIndex(0)
+        speakTasks.remove(at: 0)
         if st.type == "AUDIO_PLAYER_TASK" {
             playAudioPlayerTask(st as! AudioPlayerTask)
         } else if st.type == "TTS_TASK" {
@@ -216,7 +217,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         }
     }
 
-    func playAudioPlayerTask(ap: AudioPlayerTask) {
+    func playAudioPlayerTask(_ ap: AudioPlayerTask) {
         
         //list.append(AudioFile(word, url!))
         list.append(ap.audioFile)
@@ -226,7 +227,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         }
     }
     
-    func playTextToSpeechTask(ttst: TextToSpeechTask, doPlay: Bool) {
+    func playTextToSpeechTask(_ ttst: TextToSpeechTask, doPlay: Bool) {
         self.utt = self.utt + ttst.utterance + " "
         self.utterance = AVSpeechUtterance(string: self.utt)
         self.utterance.rate = 0.4
@@ -237,7 +238,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             //en-US"
         
         if doPlay {
-            self.synth.speakUtterance(self.utterance)
+            self.synth.speak(self.utterance)
             self.utt = ""
         } else {
             // since it does not play, trigger execute instead of using
@@ -247,18 +248,18 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         // when this completes, the callback will be triggered
     }
     
-    public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+    open func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // callback from completed task - execute the next task
         list.removeAll()
         executeSpeakTasks()
     }
     
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    open func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         // callback from completed task - execute the next task
         executeSpeakTasks()
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         for voice in AVSpeechSynthesisVoice.speechVoices() {
@@ -269,36 +270,36 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         buttons += [btnPlayLeft, btnPlay, btnBackspace, btnClear, btnHistory]
         
         for button in buttons {
-            button.backgroundColor = UIColor.whiteColor()
-            button.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+            button.backgroundColor = UIColor.white
+            button.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
             button.layer.borderWidth = 1
             button.layer.cornerRadius = 5
-            button.titleLabel?.textAlignment = .Center
+            button.titleLabel?.textAlignment = .center
         }
         
-        txtMain.backgroundColor = UIColor.whiteColor()
-        txtMain.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        txtMain.backgroundColor = UIColor.white
+        txtMain.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
         txtMain.layer.borderWidth = 1
         txtMain.layer.cornerRadius = 5
         
-        modesCollectionView.backgroundColor = UIColor.darkGrayColor()
-        modesCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        modesCollectionView.backgroundColor = UIColor.darkGray
+        modesCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
         modesCollectionView.layer.borderWidth = 1
         modesCollectionView.layer.cornerRadius = 5
         
-        wordsCollectionView.backgroundColor = UIColor.lightGrayColor()
-        wordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        wordsCollectionView.backgroundColor = UIColor.lightGray
+        wordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
         wordsCollectionView.layer.borderWidth = 1
         wordsCollectionView.layer.cornerRadius = 5
         
-        fastwordsCollectionView.backgroundColor = UIColor.whiteColor()
-        fastwordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).CGColor
+        fastwordsCollectionView.backgroundColor = UIColor.white
+        fastwordsCollectionView.layer.borderColor = UIColor(red:0, green: 0, blue:0, alpha: 0.3).cgColor
         fastwordsCollectionView.layer.borderWidth = 1
         fastwordsCollectionView.layer.cornerRadius = 5
         
         // Setup modes
         loadModes()
-        self.modesDataSource = CollectionViewDataSource(items: self.soundboards, reuseIdentifier: "Soundboard", configureBlock: { (cell, item) -> () in
+        self.modesDataSource = CollectionViewDataSource(items: self.soundboards as NSArray, reuseIdentifier: "Soundboard", configureBlock: { (cell, item) -> () in
             if let actualCell = cell as? SoundboardCell {
                 if let actualItem = item as? Soundboard {
                     actualCell.configureForItem(actualItem)
@@ -309,7 +310,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         
         // Setup words
         loadWords()
-        self.wordsDataSource = CollectionViewDataSource(items: self.words, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
+        self.wordsDataSource = CollectionViewDataSource(items: self.words as NSArray, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
             if let actualCell = cell as? WordCell {
                 if let actualItem = item as? Word {
                     actualCell.configureForItem(actualItem)
@@ -319,7 +320,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         self.wordsCollectionView.dataSource = self.wordsDataSource
         
         loadFastwords()
-        self.fastwordsDataSource = CollectionViewDataSource(items: self.fastwords, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
+        self.fastwordsDataSource = CollectionViewDataSource(items: self.fastwords as NSArray, reuseIdentifier: "Word", configureBlock: { (cell, item) -> () in
             if let actualCell = cell as? WordCell {
                 if let actualItem = item as? Word {
                     actualCell.configureForItem(actualItem)
@@ -334,7 +335,7 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         //self.utterance.rate = 0.4
         //self.synth.speakUtterance(self.utterance)
         self.synth.delegate = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "defaultsChanged", name: NSUserDefaultsDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         configureSettings()
     }
     
@@ -343,28 +344,28 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         configureSettings()
     }
     
-    private func configureSettings()
+    fileprivate func configureSettings()
     {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        useRecordingsIfPossible = userDefaults.boolForKey("use_recordings_if_possible")
+        let userDefaults = UserDefaults.standard
+        useRecordingsIfPossible = userDefaults.bool(forKey: "use_recordings_if_possible")
     }
     
-    public override func didReceiveMemoryWarning() {
+    open override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func loadModes() {
         // load the soundboards.txt file
         // for each line in the file, add the soundboard
-        let soundboardsPath = NSBundle.mainBundle().pathForResource("soundboards", ofType: "txt")
-        if let contents = try? String(contentsOfFile: soundboardsPath!, usedEncoding: nil) {
-            let lines = contents.componentsSeparatedByString("\n")
-            for (_, line) in lines.enumerate() {
+        let soundboardsPath = Bundle.main.path(forResource: "soundboards", ofType: "txt")
+        if let contents = try? String(contentsOfFile: soundboardsPath!) {
+            let lines = contents.components(separatedBy: "\n")
+            for (_, line) in lines.enumerated() {
                 soundboards.append(Soundboard(name: line))
             }
         }
@@ -372,33 +373,33 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
         self.modesCollectionView.reloadData()
     }
     
-    func loadWords(mode: String = "Names") {
+    func loadWords(_ mode: String = "Names") {
         if mode == currentMode {
             return
         }
-        words.removeAll()
-        if let wordsPath = NSBundle.mainBundle().pathForResource(mode.lowercaseString, ofType: "txt") {
-            if let contents = try? String(contentsOfFile: wordsPath, usedEncoding: nil) {
-                let lines = contents.componentsSeparatedByString("\n")
-                for (_, line) in lines.enumerate() {
+        words.removeAllObjects()
+        if let wordsPath = Bundle.main.path(forResource: mode.lowercased(), ofType: "txt") {
+            if let contents = try? String(contentsOfFile: wordsPath) {
+                let lines = contents.components(separatedBy: "\n")
+                for (_, line) in lines.enumerated() {
                     let word = Word(name: line)
-                    words.append(word)
+                    words.add(word)
                 }
             }
         }
-        self.wordsDataSource?.setDataItems(words)
+        self.wordsDataSource?.setDataItems(words as NSArray)
         currentMode = mode
         self.wordsCollectionView.reloadData()
     }
     
     func loadFastwords() {
-        fastwords.removeAll()
-        if let wordsPath = NSBundle.mainBundle().pathForResource("fastwords", ofType: "txt") {
-            if let contents = try? String(contentsOfFile: wordsPath, usedEncoding: nil) {
-                let lines = contents.componentsSeparatedByString("\n")
-                for (_, line) in lines.enumerate() {
+        fastwords.removeAllObjects()
+        if let wordsPath = Bundle.main.path(forResource: "fastwords", ofType: "txt") {
+            if let contents = try? String(contentsOfFile: wordsPath) {
+                let lines = contents.components(separatedBy: "\n")
+                for (_, line) in lines.enumerated() {
                     let word = Word(name: line)
-                    fastwords.append(word)
+                    fastwords.add(word)
                 }
             }
         }
@@ -407,13 +408,13 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
     }
 
     
-    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.modesCollectionView {
-            let soundboard = soundboards[indexPath.item]
+            let soundboard = soundboards[(indexPath as NSIndexPath).item]
             // Handle switch modes
             loadWords(soundboard.name)
         } else if collectionView == self.wordsCollectionView {
-            let word = words[indexPath.item]
+            let word = words[(indexPath as NSIndexPath).item] as! Word
             //print("word: \(word.name)")
             // OLD - add to list
             //txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
@@ -423,15 +424,15 @@ public class HomeViewController: UIViewController, UICollectionViewDelegate, AVS
             doPlay(word.name, forceUseRecordingsIfPossible: true)
             
         } else if collectionView == self.fastwordsCollectionView {
-            let word = fastwords[indexPath.item]
+            let word = fastwords[(indexPath as NSIndexPath).item] as! Word
             print ("fastword: \(word.name)")
-            txtMain.text = txtMain.text.stringByAppendingString(word.name + " ")
+            txtMain.text = txtMain.text + (word.name + " ")
         }
     }
     
-    public func onSpacebarTapped() {
+    open func onSpacebarTapped() {
         var text = txtMain.text
-        text = text.stringByAppendingString(" ")
+        text = text! + " "
         txtMain.text = text
     }
 }

@@ -29,23 +29,23 @@ import MediaPlayer
 
 protocol AudioPlayerProtocol: AVAudioPlayerDelegate
 {
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool)
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
 }
 
-public class AudioPlayer: NSObject
+open class AudioPlayer: NSObject
 {
-    public var delegate: AVAudioPlayerDelegate?
+    open var delegate: AVAudioPlayerDelegate?
     public typealias function = () -> ()
     
     var audioPlayer: AVAudioPlayer?
     
     // Playlist
-    private var currentSong: AudioFile?
+    fileprivate var currentSong: AudioFile?
     var songsList: [AudioFile]?
     
     // Events
-    public var playerDidStart: function?
-    public var playerDidStop: function?
+    open var playerDidStart: function?
+    open var playerDidStop: function?
     
     public override init()
     {
@@ -53,7 +53,7 @@ public class AudioPlayer: NSObject
         super.init()
     }
     
-    public func startSession()
+    open func startSession()
     {
         // Session
         do {
@@ -70,15 +70,15 @@ public class AudioPlayer: NSObject
         }
     }
     
-    private func prepareAudio(index: Int)
+    fileprivate func prepareAudio(_ index: Int)
     {
-        guard let songs = self.songsList where (index >= 0 && index < songs.count) else {
+        guard let songs = self.songsList , (index >= 0 && index < songs.count) else {
             return
         }
         prepareAudio(songs[index], index)
     }
     
-    private func prepareAudio(song: AudioFile, _ index: Int)
+    fileprivate func prepareAudio(_ song: AudioFile, _ index: Int)
     {
         // Keep alive audio at background
         if song.path == nil {
@@ -91,7 +91,7 @@ public class AudioPlayer: NSObject
         }
         
         do {
-            self.audioPlayer = try AVAudioPlayer(contentsOfURL: song.path!)
+            self.audioPlayer = try AVAudioPlayer(contentsOf: song.path! as URL)
         }
         catch let error as NSError {
             print("A AVAudioPlayer contentsOfURL error occurred, here are the details:\n \(error)")
@@ -105,7 +105,7 @@ public class AudioPlayer: NSObject
         song.duration = self.audioPlayer!.duration
     }
     
-    private func songListIsValid() -> Bool
+    fileprivate func songListIsValid() -> Bool
     {
         if self.songsList == nil || self.songsList!.count == 0 {
             return false
@@ -115,7 +115,7 @@ public class AudioPlayer: NSObject
         }
     }
     
-    public func playSong()
+    open func playSong()
     {
         // Verify if has a valid playlist to play
         if !songListIsValid() {
@@ -128,7 +128,7 @@ public class AudioPlayer: NSObject
         self.audioPlayer!.play()
     }
     
-    public func playSong(index: Int, songsList: [AudioFile])
+    open func playSong(_ index: Int, songsList: [AudioFile])
     {
         self.songsList = songsList
         // Prepare core audio
@@ -137,7 +137,7 @@ public class AudioPlayer: NSObject
         playSong()
     }
     
-    public func playSong(index: Int)
+    open func playSong(_ index: Int)
     {
         // Verify if has a valid playlist to play
         if !songListIsValid() {
@@ -149,9 +149,9 @@ public class AudioPlayer: NSObject
         playSong()
     }
     
-    public func stopSong()
+    open func stopSong()
     {
-        if self.audioPlayer == nil || !self.audioPlayer!.playing {
+        if self.audioPlayer == nil || !self.audioPlayer!.isPlaying {
             return
         }
         
@@ -164,14 +164,14 @@ public class AudioPlayer: NSObject
         }
     }
     
-    public func playNextSong(stopIfInvalid stopIfInvalid: Bool = false)
+    open func playNextSong(stopIfInvalid: Bool = false)
     {
         if let songs = self.songsList {
             if let song = self.currentSong {
                 var index = song.index
                 
                 // Next song
-                index++
+                index += 1
                 
                 if index > songs.count - 1 {
                     if stopIfInvalid {
@@ -192,7 +192,7 @@ public class AudioPlayer: NSObject
 
 extension AudioPlayer: AudioPlayerProtocol
 {
-    public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool)
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         if !flag {
             // this generally means the playlist has ended - 
